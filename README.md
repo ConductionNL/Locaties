@@ -1,4 +1,4 @@
-# About this application
+# About this component
 
 Het component "Locaties" is ontwikkeld voor de gemeente Utrecht en beschrijft een geografische locatie met de daarbij horende kenmerken. Dit stelt je in staat om locaties te raadplegen en te beheren. Daarnaast is het mogelijk hier de kenmerken van de locaties te registreren en aan te passen.
 
