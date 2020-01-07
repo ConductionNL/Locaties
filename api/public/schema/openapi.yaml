@@ -1,40 +1,40 @@
 openapi: 3.0.2
 info:
-  title: 'Proto Component'
+  title: 'Locatie Catalogus'
   version: V.0.1
   description: |
     API Details
-    - Component: Proto Component
-    - Reference: pc
+    - Component: Locatie Catalogus
+    - Reference: lc
     - Enviroment: dev
     - Version: V.0.1
     - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
-    - Datamodel: [postman](/schema/pc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/lc-php) 
+    - Datamodel: [postman](/schema/lc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
-  /example_entities:
+  /accommodations:
     get:
       tags:
-        - ExampleEntity
-      operationId: getExampleEntityCollection
-      summary: 'Retrieves the collection of ExampleEntity resources.'
+        - Accommodation
+      operationId: getAccommodationCollection
+      summary: 'Retrieves the collection of Accommodation resources.'
       responses:
         200:
-          description: 'ExampleEntity collection response'
+          description: 'Accommodation collection response'
           content:
             application/hal+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             application/ld+json:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ExampleEntity:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Accommodation:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -44,45 +44,33 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Accommodation-read'
       parameters:
-        -
-          name: like_name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: like_description
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -166,43 +154,43 @@ paths:
         - application/health+json
     post:
       tags:
-        - ExampleEntity
-      operationId: postExampleEntityCollection
-      summary: 'Creates a ExampleEntity resource.'
+        - Accommodation
+      operationId: postAccommodationCollection
+      summary: 'Creates a Accommodation resource.'
       responses:
         201:
-          description: 'ExampleEntity resource created'
+          description: 'Accommodation resource created'
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+                $ref: '#/components/schemas/Accommodation:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
           links:
-            GetExampleEntityItem:
+            GetAccommodationItem:
               parameters:
                 id: '$response.body#/id'
-              operationId: getExampleEntityItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /example_entities/{id}`.'
+              operationId: getAccommodationItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /accommodations/{id}`.'
         400:
           description: 'Invalid input'
         404:
@@ -211,29 +199,29 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
+              $ref: '#/components/schemas/Accommodation:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-        description: 'The new ExampleEntity resource'
+              $ref: '#/components/schemas/Accommodation-write'
+        description: 'The new Accommodation resource'
       parameters:
         -
           name: Authorization
@@ -264,12 +252,12 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-  '/example_entities/{id}':
+  '/accommodations/{id}':
     get:
       tags:
-        - ExampleEntity
-      operationId: audittrailExampleEntityItem
-      summary: 'Retrieves a ExampleEntity resource.'
+        - Accommodation
+      operationId: getAccommodationItem
+      summary: 'Retrieves a Accommodation resource.'
       parameters:
         -
           name: id
@@ -350,41 +338,87 @@ paths:
           in: query
       responses:
         200:
-          description: 'ExampleEntity resource response'
+          description: 'Accommodation resource response'
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+                $ref: '#/components/schemas/Accommodation:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
         404:
           description: 'Resource not found'
       produces:
         - application/health+json
+    delete:
+      tags:
+        - Accommodation
+      operationId: deleteAccommodationItem
+      summary: 'Removes the Accommodation resource.'
+      responses:
+        204:
+          description: 'Accommodation resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
     put:
       tags:
-        - ExampleEntity
-      operationId: putExampleEntityItem
-      summary: 'Replaces the ExampleEntity resource.'
+        - Accommodation
+      operationId: putAccommodationItem
+      summary: 'Replaces the Accommodation resource.'
       parameters:
         -
           name: id
@@ -423,32 +457,32 @@ paths:
           in: header
       responses:
         200:
-          description: 'ExampleEntity resource updated'
+          description: 'Accommodation resource updated'
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+                $ref: '#/components/schemas/Accommodation:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Accommodation-read'
         400:
           description: 'Invalid input'
         404:
@@ -457,37 +491,469 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
+              $ref: '#/components/schemas/Accommodation:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Accommodation-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-        description: 'The updated ExampleEntity resource'
+              $ref: '#/components/schemas/Accommodation-write'
+        description: 'The updated Accommodation resource'
+    patch:
+      tags:
+        - Accommodation
+      operationId: patchAccommodationItem
+      summary: 'Updates the Accommodation resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Accommodation resource updated'
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Accommodation:jsonld-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Accommodation-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Accommodation-write'
+        description: 'The updated Accommodation resource'
+  /places:
+    get:
+      tags:
+        - Place
+      operationId: getPlaceCollection
+      summary: 'Retrieves the collection of Place resources.'
+      responses:
+        200:
+          description: 'Place collection response'
+          content:
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Place:jsonld' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+      parameters:
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Place
+      operationId: postPlaceCollection
+      summary: 'Creates a Place resource.'
+      responses:
+        201:
+          description: 'Place resource created'
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Place:jsonld'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Place'
+          links:
+            GetPlaceItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getPlaceItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /places/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Place:jsonld'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Place'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Place'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Place'
+        description: 'The new Place resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/places/{id}':
+    get:
+      tags:
+        - Place
+      operationId: getPlaceItem
+      summary: 'Retrieves a Place resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Place resource response'
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Place:jsonld'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Place'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
     delete:
       tags:
-        - ExampleEntity
-      operationId: deleteExampleEntityItem
-      summary: 'Removes the ExampleEntity resource.'
+        - Place
+      operationId: deletePlaceItem
+      summary: 'Removes the Place resource.'
       responses:
         204:
-          description: 'ExampleEntity resource deleted'
+          description: 'Place resource deleted'
         404:
           description: 'Resource not found'
       parameters:
@@ -526,46 +992,297 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
+    put:
+      tags:
+        - Place
+      operationId: putPlaceItem
+      summary: 'Replaces the Place resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Place resource updated'
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Place:jsonld'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Place'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Place:jsonld'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Place'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Place'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Place'
+        description: 'The updated Place resource'
+    patch:
+      tags:
+        - Place
+      operationId: patchPlaceItem
+      summary: 'Updates the Place resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Place resource updated'
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Place:jsonld'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Place'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Place'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Place'
+        description: 'The updated Place resource'
 components:
   schemas:
-    ExampleEntity-read:
+    Accommodation-read:
       type: object
-      description: 'This is an example entity.'
+      description: ''
       properties:
         id:
           readOnly: true
-          externalDocs:
-            url: 'http://schema.org/identifier'
           type: string
         name:
-          description: 'The name of this example property'
+          description: 'The name of this accommodation is displayed as a title to end users'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        accommodationCategory:
+          description: 'The category this accomodation falls into'
           type: string
+        floorSize:
+          description: 'The floor surface area of the accommodation'
+          type: string
+        petsAllowed:
+          description: 'Answers the question if pets are allowed or not'
+          type: boolean
+        wheelchairAccessible:
+          description: 'Answers the question if the accomodation is wheelchair accessible'
+          type: boolean
+        numberOfBathroomsTotal:
+          description: 'The number of available toilets at the accommodation'
+          type: integer
+        floorLevel:
+          description: 'The floor level the accommodation is situated on'
+          type: integer
+        maximumAttendeeCapacity:
+          description: 'The maximum number of attendees the accommodation can facilitate'
+          type: integer
+        product:
+          description: 'The product this accommodation is related to'
+          type: string
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            type: string
+        place:
+          $ref: '#/components/schemas/Place-read'
       required:
         - name
-    ExampleEntity-write:
+        - accommodationCategory
+        - floorSize
+        - petsAllowed
+        - wheelchairAccessible
+        - numberOfBathroomsTotal
+        - floorLevel
+        - maximumAttendeeCapacity
+        - product
+        - resources
+    Accommodation-write:
       type: object
-      description: 'This is an example entity.'
+      description: ''
       required:
         - name
+        - accommodationCategory
+        - floorSize
+        - petsAllowed
+        - wheelchairAccessible
+        - numberOfBathroomsTotal
+        - floorLevel
+        - maximumAttendeeCapacity
+        - product
+        - resources
       properties:
         name:
-          description: 'The name of this example property'
+          description: 'The name of this accommodation is displayed as a title to end users'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        accommodationCategory:
+          description: 'The category this accomodation falls into'
           type: string
-    'ExampleEntity:jsonld-read':
+        floorSize:
+          description: 'The floor surface area of the accommodation'
+          type: string
+        petsAllowed:
+          description: 'Answers the question if pets are allowed or not'
+          type: boolean
+        wheelchairAccessible:
+          description: 'Answers the question if the accomodation is wheelchair accessible'
+          type: boolean
+        numberOfBathroomsTotal:
+          description: 'The number of available toilets at the accommodation'
+          type: integer
+        floorLevel:
+          description: 'The floor level the accommodation is situated on'
+          type: integer
+        maximumAttendeeCapacity:
+          description: 'The maximum number of attendees the accommodation can facilitate'
+          type: integer
+        product:
+          description: 'The product this accommodation is related to'
+          type: string
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            type: string
+        place:
+          $ref: '#/components/schemas/Place-write'
+    'Accommodation:jsonld-read':
       type: object
-      description: 'This is an example entity.'
+      description: ''
       properties:
         '@context':
           readOnly: true
@@ -578,25 +1295,69 @@ components:
           type: string
         id:
           readOnly: true
-          externalDocs:
-            url: 'http://schema.org/identifier'
           type: string
         name:
-          description: 'The name of this example property'
+          description: 'The name of this accommodation is displayed as a title to end users'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        accommodationCategory:
+          description: 'The category this accomodation falls into'
           type: string
+        floorSize:
+          description: 'The floor surface area of the accommodation'
+          type: string
+        petsAllowed:
+          description: 'Answers the question if pets are allowed or not'
+          type: boolean
+        wheelchairAccessible:
+          description: 'Answers the question if the accomodation is wheelchair accessible'
+          type: boolean
+        numberOfBathroomsTotal:
+          description: 'The number of available toilets at the accommodation'
+          type: integer
+        floorLevel:
+          description: 'The floor level the accommodation is situated on'
+          type: integer
+        maximumAttendeeCapacity:
+          description: 'The maximum number of attendees the accommodation can facilitate'
+          type: integer
+        product:
+          description: 'The product this accommodation is related to'
+          type: string
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            type: string
+        place:
+          $ref: '#/components/schemas/Place:jsonld-read'
       required:
         - name
-    'ExampleEntity:jsonld-write':
+        - accommodationCategory
+        - floorSize
+        - petsAllowed
+        - wheelchairAccessible
+        - numberOfBathroomsTotal
+        - floorLevel
+        - maximumAttendeeCapacity
+        - product
+        - resources
+    'Accommodation:jsonld-write':
       type: object
-      description: 'This is an example entity.'
+      description: ''
       required:
         - name
+        - accommodationCategory
+        - floorSize
+        - petsAllowed
+        - wheelchairAccessible
+        - numberOfBathroomsTotal
+        - floorLevel
+        - maximumAttendeeCapacity
+        - product
+        - resources
       properties:
         '@context':
           readOnly: true
@@ -608,66 +1369,596 @@ components:
           readOnly: true
           type: string
         name:
-          description: 'The name of this example property'
+          description: 'The name of this accommodation is displayed as a title to end users'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        accommodationCategory:
+          description: 'The category this accomodation falls into'
           type: string
+        floorSize:
+          description: 'The floor surface area of the accommodation'
+          type: string
+        petsAllowed:
+          description: 'Answers the question if pets are allowed or not'
+          type: boolean
+        wheelchairAccessible:
+          description: 'Answers the question if the accomodation is wheelchair accessible'
+          type: boolean
+        numberOfBathroomsTotal:
+          description: 'The number of available toilets at the accommodation'
+          type: integer
+        floorLevel:
+          description: 'The floor level the accommodation is situated on'
+          type: integer
+        maximumAttendeeCapacity:
+          description: 'The maximum number of attendees the accommodation can facilitate'
+          type: integer
+        product:
+          description: 'The product this accommodation is related to'
+          type: string
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            type: string
+        place:
+          $ref: '#/components/schemas/Place:jsonld-write'
+    Place:
+      type: object
+      description: ''
+      properties:
+        id:
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        accommodations:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+    Place-read:
+      type: object
+      description: ''
+      properties:
+        id:
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+    Place-write:
+      type: object
+      description: ''
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+      properties:
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+    'Place:jsonld':
+      type: object
+      description: ''
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        accommodations:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+    'Place:jsonld-read':
+      type: object
+      description: ''
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+    'Place:jsonld-write':
+      type: object
+      description: ''
+      required:
+        - name
+        - publicAccess
+        - smokingAllowed
+        - openingTime
+        - closingTime
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this place is displayed as a title to end users'
+          type: string
+        description:
+          description: 'The description of this place is displayed to end users as additional information'
+          type: string
+        bagId:
+          description: 'Bagnummeraanduiding of this Address'
+          type: string
+        url:
+          description: 'Website of this Place'
+          type: string
+        telephone:
+          description: 'Phone number of this Place'
+          type: string
+        logo:
+          description: 'Logo of this Place'
+          type: string
+        photo:
+          description: 'Photo of this Place'
+          type: string
+        hasMap:
+          description: 'Map of this Place'
+          type: string
+        publicAccess:
+          description: 'Answers the question if the place is publicly accessible'
+          type: boolean
+        smokingAllowed:
+          description: 'Answers the question if smoking is allowed in this place'
+          type: boolean
+        openingTime:
+          description: 'the opening time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        closingTime:
+          description: 'the closing time of the location'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
 definitions:
-  ExampleEntity-read:
+  Accommodation-read:
     properties:
-      id:
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
+      id: []
       name:
-        example: 'My Group'
+        example: 'My Accommodation'
         maxLength: 255
       description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      accommodationCategory:
+        example: Restaurant
         maxLength: 255
+      floorSize:
+        example: '25 m^2'
+        maxLength: 255
+      petsAllowed:
+        example: 'true'
+      wheelchairAccessible:
+        example: 'true'
+      numberOfBathroomsTotal:
+        example: '10'
+      floorLevel:
+        example: '10'
+      maximumAttendeeCapacity:
+        example: '10'
+      product:
+        example: 'My Accommodation'
+        maxLength: 255
+      resources:
+        example: 'My Accommodation'
+        maxLength: 255
+      place: []
     required:
       - name
-  ExampleEntity-write:
+      - accommodationCategory
+      - floorSize
+      - petsAllowed
+      - wheelchairAccessible
+      - numberOfBathroomsTotal
+      - floorLevel
+      - maximumAttendeeCapacity
+      - product
+      - resources
+  Accommodation-write:
     properties:
       name:
-        example: 'My Group'
+        example: 'My Accommodation'
         maxLength: 255
       description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      accommodationCategory:
+        example: Restaurant
         maxLength: 255
+      floorSize:
+        example: '25 m^2'
+        maxLength: 255
+      petsAllowed:
+        example: 'true'
+      wheelchairAccessible:
+        example: 'true'
+      numberOfBathroomsTotal:
+        example: '10'
+      floorLevel:
+        example: '10'
+      maximumAttendeeCapacity:
+        example: '10'
+      product:
+        example: 'My Accommodation'
+        maxLength: 255
+      resources:
+        example: 'My Accommodation'
+        maxLength: 255
+      place: []
     required:
       - name
+      - accommodationCategory
+      - floorSize
+      - petsAllowed
+      - wheelchairAccessible
+      - numberOfBathroomsTotal
+      - floorLevel
+      - maximumAttendeeCapacity
+      - product
+      - resources
+  Place-read:
+    properties:
+      id: []
+      name:
+        example: 'My Place'
+        maxLength: 255
+      description:
+        example: 'This is the best place ever'
+        maxLength: 2550
+      bagId:
+        example: '0363200000218908'
+        maxLength: 16
+      url:
+        example: 'https://location.com'
+        maxLength: 255
+      telephone:
+        example: '+31 (0)26 355 7772'
+        maxLength: 255
+      logo:
+        example: 'https://location.com/logo.svg'
+        maxLength: 255
+      photo:
+        example: 'https://location.com/photo.jpg'
+        maxLength: 255
+      hasMap:
+        example: 'https://location.com/map.pdf'
+        maxLength: 255
+      publicAccess:
+        example: 'true'
+      smokingAllowed:
+        example: 'true'
+      openingTime:
+        example: '08:00'
+      closingTime:
+        example: '18:00'
+    required:
+      - name
+      - publicAccess
+      - smokingAllowed
+      - openingTime
+      - closingTime
+  Place-write:
+    properties:
+      name:
+        example: 'My Place'
+        maxLength: 255
+      description:
+        example: 'This is the best place ever'
+        maxLength: 2550
+      bagId:
+        example: '0363200000218908'
+        maxLength: 16
+      url:
+        example: 'https://location.com'
+        maxLength: 255
+      telephone:
+        example: '+31 (0)26 355 7772'
+        maxLength: 255
+      logo:
+        example: 'https://location.com/logo.svg'
+        maxLength: 255
+      photo:
+        example: 'https://location.com/photo.jpg'
+        maxLength: 255
+      hasMap:
+        example: 'https://location.com/map.pdf'
+        maxLength: 255
+      publicAccess:
+        example: 'true'
+      smokingAllowed:
+        example: 'true'
+      openingTime:
+        example: '08:00'
+      closingTime:
+        example: '18:00'
+    required:
+      - name
+      - publicAccess
+      - smokingAllowed
+      - openingTime
+      - closingTime
 tags:
   -
-    name: ExampleEntity
+    name: Accommodation
     description: |
-      This is an example entity.
       
-      With an adtional description, all in all its pritty nice [url](www.google.nl)
+      
+      
+  -
+    name: Place
+    description: |
+      
+      
+      
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the Place resource'
+      write: 'write right to the Place resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the Place resource'
+      write: 'write right to the Place resource'
 host: irc.zaakonline.nl
 servers:
   -
