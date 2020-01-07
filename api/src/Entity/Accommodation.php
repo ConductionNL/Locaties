@@ -57,6 +57,7 @@ class Accommodation
 
     /**
      * @var string The category this accomodation falls into
+     *
      * @example Restaurant
      *
      * @Groups({"read","write"})
@@ -70,6 +71,7 @@ class Accommodation
 
     /**
      * @var string The floor surface area of the accommodation
+     *
      * @example 25 m^2
      *
      * @Groups({"read", "write"})
@@ -82,18 +84,19 @@ class Accommodation
     private $floorSize;
 
     /**
-     * @var boolean Answers the question if pets are allowed or not
+     * @var bool Answers the question if pets are allowed or not
+     *
      * @example true
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
-     *
      */
     private $petsAllowed;
 
     /**
-     * @var boolean Answers the question if the accomodation is wheelchair accessible
+     * @var bool Answers the question if the accomodation is wheelchair accessible
+     *
      * @example true
      *
      * @Groups({"read", "write"})
@@ -103,18 +106,19 @@ class Accommodation
     private $wheelchairAccessible;
 
     /**
-     * @var integer The number of available toilets at the accommodation
+     * @var int The number of available toilets at the accommodation
+     *
      * @example 10
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer")
      * @Assert\NotNull
-     *
      */
     private $numberOfBathroomsTotal;
 
     /**
-     * @var integer The floor level the accommodation is situated on
+     * @var int The floor level the accommodation is situated on
+     *
      * @example 10
      *
      * @Groups({"read", "write"})
@@ -124,7 +128,8 @@ class Accommodation
     private $floorLevel;
 
     /**
-     * @var integer The maximum number of attendees the accommodation can facilitate
+     * @var int The maximum number of attendees the accommodation can facilitate
+     *
      * @example 10
      *
      * @Groups({"read", "write"})
@@ -164,8 +169,6 @@ class Accommodation
      * @ORM\JoinColumn(nullable=false)
      */
     private $place;
-
-
 
     public function getId(): ?string
     {

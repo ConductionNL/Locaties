@@ -134,18 +134,19 @@ class Place
     private $hasMap;
 
     /**
-     * @var boolean Answers the question if the place is publicly accessible
+     * @var bool Answers the question if the place is publicly accessible
+     *
      * @example true
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
-     *
      */
     private $publicAccess;
 
     /**
-     * @var boolean Answers the question if smoking is allowed in this place
+     * @var bool Answers the question if smoking is allowed in this place
+     *
      * @example true
      *
      * @Groups({"read", "write"})
@@ -156,6 +157,7 @@ class Place
 
     /**
      * @var DateTime the opening time of the location
+     *
      * @example 08:00
      *
      * @Groups({"read", "write"})
@@ -167,6 +169,7 @@ class Place
 
     /**
      * @var DateTime the closing time of the location
+     *
      * @example 18:00
      *
      * @Groups({"read", "write"})
