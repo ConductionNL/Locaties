@@ -118,9 +118,9 @@ $ helm upgrade pc-prod ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" --name
 
 Or del if you want to delete an existing  one
 ```CLI
-$ helm del pc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
-$ helm del pc-stag --purge --kubeconfig="api/helm/kubeconfig.yaml" 
-$ helm del pc-prod --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del lc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del lc-stag --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del lc-prod --purge --kubeconfig="api/helm/kubeconfig.yaml" 
 ```
 
 Note that you can replace common ground with the namespace that you want to use (normally the name of your component).
