@@ -607,12 +607,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             application/ld+json:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Place:jsonld' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Place:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -622,32 +622,32 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Place'
+                  $ref: '#/components/schemas/Place-read'
       parameters:
         -
           name: page
@@ -741,28 +741,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Place:jsonld'
+                $ref: '#/components/schemas/Place:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
           links:
             GetPlaceItem:
               parameters:
@@ -777,28 +777,28 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Place:jsonld'
+              $ref: '#/components/schemas/Place:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
         description: 'The new Place resource'
       parameters:
         -
@@ -920,28 +920,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Place:jsonld'
+                $ref: '#/components/schemas/Place:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
         404:
           description: 'Resource not found'
       produces:
@@ -1039,28 +1039,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Place:jsonld'
+                $ref: '#/components/schemas/Place:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
         400:
           description: 'Invalid input'
         404:
@@ -1069,28 +1069,28 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Place:jsonld'
+              $ref: '#/components/schemas/Place:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
         description: 'The updated Place resource'
     patch:
       tags:
@@ -1139,28 +1139,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Place:jsonld'
+                $ref: '#/components/schemas/Place:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Place'
+                $ref: '#/components/schemas/Place-read'
         400:
           description: 'Invalid input'
         404:
@@ -1169,7 +1169,7 @@ paths:
         content:
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Place'
+              $ref: '#/components/schemas/Place-write'
         description: 'The updated Place resource'
 components:
   schemas:
@@ -1405,65 +1405,6 @@ components:
             type: string
         place:
           $ref: '#/components/schemas/Place:jsonld-write'
-    Place:
-      type: object
-      description: ''
-      properties:
-        id:
-          readOnly: true
-          type: string
-        name:
-          description: 'The name of this place is displayed as a title to end users'
-          type: string
-        description:
-          description: 'The description of this place is displayed to end users as additional information'
-          type: string
-        bagId:
-          description: 'Bagnummeraanduiding of this Address'
-          type: string
-        url:
-          description: 'Website of this Place'
-          type: string
-        telephone:
-          description: 'Phone number of this Place'
-          type: string
-        logo:
-          description: 'Logo of this Place'
-          type: string
-        photo:
-          description: 'Photo of this Place'
-          type: string
-        hasMap:
-          description: 'Map of this Place'
-          type: string
-        publicAccess:
-          description: 'Answers the question if the place is publicly accessible'
-          type: boolean
-        smokingAllowed:
-          description: 'Answers the question if smoking is allowed in this place'
-          type: boolean
-        openingTime:
-          description: 'the opening time of the location'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        closingTime:
-          description: 'the closing time of the location'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        accommodations:
-          type: array
-          items:
-            type: string
-      required:
-        - name
-        - publicAccess
-        - smokingAllowed
-        - openingTime
-        - closingTime
     Place-read:
       type: object
       description: ''
@@ -1571,74 +1512,6 @@ components:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-    'Place:jsonld':
-      type: object
-      description: ''
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: string
-        name:
-          description: 'The name of this place is displayed as a title to end users'
-          type: string
-        description:
-          description: 'The description of this place is displayed to end users as additional information'
-          type: string
-        bagId:
-          description: 'Bagnummeraanduiding of this Address'
-          type: string
-        url:
-          description: 'Website of this Place'
-          type: string
-        telephone:
-          description: 'Phone number of this Place'
-          type: string
-        logo:
-          description: 'Logo of this Place'
-          type: string
-        photo:
-          description: 'Photo of this Place'
-          type: string
-        hasMap:
-          description: 'Map of this Place'
-          type: string
-        publicAccess:
-          description: 'Answers the question if the place is publicly accessible'
-          type: boolean
-        smokingAllowed:
-          description: 'Answers the question if smoking is allowed in this place'
-          type: boolean
-        openingTime:
-          description: 'the opening time of the location'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        closingTime:
-          description: 'the closing time of the location'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        accommodations:
-          type: array
-          items:
-            type: string
-      required:
-        - name
-        - publicAccess
-        - smokingAllowed
-        - openingTime
-        - closingTime
     'Place:jsonld-read':
       type: object
       description: ''
@@ -1795,7 +1668,6 @@ definitions:
         maxLength: 255
       resources:
         example: 'My Accommodation'
-        maxLength: 255
       place: []
     required:
       - name
@@ -1837,7 +1709,6 @@ definitions:
         maxLength: 255
       resources:
         example: 'My Accommodation'
-        maxLength: 255
       place: []
     required:
       - name
