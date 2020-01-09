@@ -1179,6 +1179,8 @@ components:
       properties:
         id:
           readOnly: true
+          externalDocs:
+            url: 'http://schema.org/identifier'
           type: string
         name:
           description: 'The name of this accommodation is displayed as a title to end users'
