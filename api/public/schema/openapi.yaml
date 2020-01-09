@@ -8,7 +8,7 @@ info:
     - Reference: lc
     - Enviroment: dev
     - Version: V.0.1
-    - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
+    - Repository: [online](https://github.com/ConductionNL/locatiecatalogus) / [zip](https://github.com/ConductionNL/locatiecatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/lc-php) 
     - Datamodel: [postman](/schema/lc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
