@@ -166,6 +166,8 @@ class Accommodation
     private $resources = [];
 
     /**
+     * @var Place The location this accommodation belongs to
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="accommodations")
      * @ORM\JoinColumn(nullable=false)

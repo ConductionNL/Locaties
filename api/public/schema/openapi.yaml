@@ -1175,12 +1175,10 @@ components:
   schemas:
     Accommodation-read:
       type: object
-      description: ''
+      description: 'A room or other accommodation that can facilitate people.'
       properties:
         id:
           readOnly: true
-          externalDocs:
-            url: 'http://schema.org/identifier'
           type: string
         name:
           description: 'The name of this accommodation is displayed as a title to end users'
@@ -1218,6 +1216,7 @@ components:
           items:
             type: string
         place:
+          description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place-read'
       required:
         - name
@@ -1232,7 +1231,7 @@ components:
         - resources
     Accommodation-write:
       type: object
-      description: ''
+      description: 'A room or other accommodation that can facilitate people.'
       required:
         - name
         - accommodationCategory
@@ -1281,10 +1280,11 @@ components:
           items:
             type: string
         place:
+          description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place-write'
     'Accommodation:jsonld-read':
       type: object
-      description: ''
+      description: 'A room or other accommodation that can facilitate people.'
       properties:
         '@context':
           readOnly: true
@@ -1334,6 +1334,7 @@ components:
           items:
             type: string
         place:
+          description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place:jsonld-read'
       required:
         - name
@@ -1348,7 +1349,7 @@ components:
         - resources
     'Accommodation:jsonld-write':
       type: object
-      description: ''
+      description: 'A room or other accommodation that can facilitate people.'
       required:
         - name
         - accommodationCategory
@@ -1406,10 +1407,11 @@ components:
           items:
             type: string
         place:
+          description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place:jsonld-write'
     Place-read:
       type: object
-      description: ''
+      description: 'A building or terrain with an address that can host accommodations.'
       properties:
         id:
           readOnly: true
@@ -1456,6 +1458,11 @@ components:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+        accommodations:
+          description: 'The accommodations in this location'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation-read'
       required:
         - name
         - publicAccess
@@ -1464,7 +1471,7 @@ components:
         - closingTime
     Place-write:
       type: object
-      description: ''
+      description: 'A building or terrain with an address that can host accommodations.'
       required:
         - name
         - publicAccess
@@ -1514,9 +1521,14 @@ components:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+        accommodations:
+          description: 'The accommodations in this location'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation-write'
     'Place:jsonld-read':
       type: object
-      description: ''
+      description: 'A building or terrain with an address that can host accommodations.'
       properties:
         '@context':
           readOnly: true
@@ -1572,6 +1584,11 @@ components:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+        accommodations:
+          description: 'The accommodations in this location'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation:jsonld-read'
       required:
         - name
         - publicAccess
@@ -1580,7 +1597,7 @@ components:
         - closingTime
     'Place:jsonld-write':
       type: object
-      description: ''
+      description: 'A building or terrain with an address that can host accommodations.'
       required:
         - name
         - publicAccess
@@ -1639,6 +1656,11 @@ components:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+        accommodations:
+          description: 'The accommodations in this location'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation:jsonld-write'
 definitions:
   Accommodation-read:
     properties:
@@ -1758,6 +1780,7 @@ definitions:
         example: '08:00'
       closingTime:
         example: '18:00'
+      accommodations: []
     required:
       - name
       - publicAccess
@@ -1798,6 +1821,7 @@ definitions:
         example: '08:00'
       closingTime:
         example: '18:00'
+      accommodations: []
     required:
       - name
       - publicAccess
@@ -1808,13 +1832,13 @@ tags:
   -
     name: Accommodation
     description: |
-      
+      A room or other accommodation that can facilitate people.
       
       
   -
     name: Place
     description: |
-      
+      A building or terrain with an address that can host accommodations.
       
       
 securityDefinitions:
