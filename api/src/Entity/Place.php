@@ -185,6 +185,8 @@ class Place
     private $closingTime;
 
     /**
+     * @var Accommodation[]|ArrayCollection The accommodations in this location
+     * @Groups({"read", "write"})
      * @ORM\OneToMany(targetEntity="App\Entity\Accommodation", mappedBy="place", orphanRemoval=true)
      */
     private $accommodations;
