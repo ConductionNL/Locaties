@@ -1664,35 +1664,61 @@ components:
 definitions:
   Accommodation-read:
     properties:
-      id: []
+      id:
+        description: ''
+        type: \UuidInterface
       name:
+        description: 'The name of this accommodation is displayed as a title to end users'
+        type: string
         example: 'My Accommodation'
         maxLength: 255
       description:
+        description: 'The description of this accommodation is displayed to end users as additional information'
+        type: string
         example: 'This is the best accommodation ever'
         maxLength: 2550
       accommodationCategory:
+        description: 'The category this accomodation falls into'
+        type: string
         example: Restaurant
         maxLength: 255
       floorSize:
+        description: 'The floor surface area of the accommodation'
+        type: string
         example: '25 m^2'
         maxLength: 255
       petsAllowed:
+        description: 'Answers the question if pets are allowed or not'
+        type: bool
         example: 'true'
       wheelchairAccessible:
+        description: 'Answers the question if the accomodation is wheelchair accessible'
+        type: bool
         example: 'true'
       numberOfBathroomsTotal:
+        description: 'The number of available toilets at the accommodation'
+        type: int
         example: '10'
       floorLevel:
+        description: 'The floor level the accommodation is situated on'
+        type: int
         example: '10'
       maximumAttendeeCapacity:
+        description: 'The maximum number of attendees the accommodation can facilitate'
+        type: int
         example: '10'
       product:
+        description: 'The product this accommodation is related to'
+        type: string
         example: 'My Accommodation'
         maxLength: 255
       resources:
+        description: 'Resources available in this accommodation'
+        type: 'array|string[]'
         example: 'My Accommodation'
-      place: []
+      place:
+        description: 'The location this accommodation belongs to'
+        type: \Place
     required:
       - name
       - accommodationCategory
@@ -1707,33 +1733,57 @@ definitions:
   Accommodation-write:
     properties:
       name:
+        description: 'The name of this accommodation is displayed as a title to end users'
+        type: string
         example: 'My Accommodation'
         maxLength: 255
       description:
+        description: 'The description of this accommodation is displayed to end users as additional information'
+        type: string
         example: 'This is the best accommodation ever'
         maxLength: 2550
       accommodationCategory:
+        description: 'The category this accomodation falls into'
+        type: string
         example: Restaurant
         maxLength: 255
       floorSize:
+        description: 'The floor surface area of the accommodation'
+        type: string
         example: '25 m^2'
         maxLength: 255
       petsAllowed:
+        description: 'Answers the question if pets are allowed or not'
+        type: bool
         example: 'true'
       wheelchairAccessible:
+        description: 'Answers the question if the accomodation is wheelchair accessible'
+        type: bool
         example: 'true'
       numberOfBathroomsTotal:
+        description: 'The number of available toilets at the accommodation'
+        type: int
         example: '10'
       floorLevel:
+        description: 'The floor level the accommodation is situated on'
+        type: int
         example: '10'
       maximumAttendeeCapacity:
+        description: 'The maximum number of attendees the accommodation can facilitate'
+        type: int
         example: '10'
       product:
+        description: 'The product this accommodation is related to'
+        type: string
         example: 'My Accommodation'
         maxLength: 255
       resources:
+        description: 'Resources available in this accommodation'
+        type: 'array|string[]'
         example: 'My Accommodation'
-      place: []
+      place:
+        description: 'The location this accommodation belongs to'
+        type: \Place
     required:
       - name
       - accommodationCategory
@@ -1747,40 +1797,70 @@ definitions:
       - resources
   Place-read:
     properties:
-      id: []
+      id:
+        description: ''
+        type: \UuidInterface
       name:
+        description: 'The name of this place is displayed as a title to end users'
+        type: string
         example: 'My Place'
         maxLength: 255
       description:
+        description: 'The description of this place is displayed to end users as additional information'
+        type: string
         example: 'This is the best place ever'
         maxLength: 2550
       bagId:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
         example: '0363200000218908'
         maxLength: 16
       url:
+        description: 'Website of this Place'
+        type: string
         example: 'https://location.com'
         maxLength: 255
       telephone:
+        description: 'Phone number of this Place'
+        type: string
         example: '+31 (0)26 355 7772'
         maxLength: 255
       logo:
+        description: 'Logo of this Place'
+        type: string
         example: 'https://location.com/logo.svg'
         maxLength: 255
       photo:
+        description: 'Photo of this Place'
+        type: string
         example: 'https://location.com/photo.jpg'
         maxLength: 255
       hasMap:
+        description: 'Map of this Place'
+        type: string
         example: 'https://location.com/map.pdf'
         maxLength: 255
       publicAccess:
+        description: 'Answers the question if the place is publicly accessible'
+        type: bool
         example: 'true'
       smokingAllowed:
+        description: 'Answers the question if smoking is allowed in this place'
+        type: bool
         example: 'true'
       openingTime:
-        example: '08:00'
+        description: 'the opening time of the location'
+        type: string
+        example: '2020-01-13 13:24:58'
+        format: date-time
       closingTime:
-        example: '18:00'
-      accommodations: []
+        description: 'the closing time of the location'
+        type: string
+        example: '2020-01-13 13:24:58'
+        format: date-time
+      accommodations:
+        description: 'The accommodations in this location'
+        type: '\Accommodation[]|\ArrayCollection'
     required:
       - name
       - publicAccess
@@ -1790,38 +1870,66 @@ definitions:
   Place-write:
     properties:
       name:
+        description: 'The name of this place is displayed as a title to end users'
+        type: string
         example: 'My Place'
         maxLength: 255
       description:
+        description: 'The description of this place is displayed to end users as additional information'
+        type: string
         example: 'This is the best place ever'
         maxLength: 2550
       bagId:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
         example: '0363200000218908'
         maxLength: 16
       url:
+        description: 'Website of this Place'
+        type: string
         example: 'https://location.com'
         maxLength: 255
       telephone:
+        description: 'Phone number of this Place'
+        type: string
         example: '+31 (0)26 355 7772'
         maxLength: 255
       logo:
+        description: 'Logo of this Place'
+        type: string
         example: 'https://location.com/logo.svg'
         maxLength: 255
       photo:
+        description: 'Photo of this Place'
+        type: string
         example: 'https://location.com/photo.jpg'
         maxLength: 255
       hasMap:
+        description: 'Map of this Place'
+        type: string
         example: 'https://location.com/map.pdf'
         maxLength: 255
       publicAccess:
+        description: 'Answers the question if the place is publicly accessible'
+        type: bool
         example: 'true'
       smokingAllowed:
+        description: 'Answers the question if smoking is allowed in this place'
+        type: bool
         example: 'true'
       openingTime:
-        example: '08:00'
+        description: 'the opening time of the location'
+        type: string
+        example: '2020-01-13 13:24:58'
+        format: date-time
       closingTime:
-        example: '18:00'
-      accommodations: []
+        description: 'the closing time of the location'
+        type: string
+        example: '2020-01-13 13:24:58'
+        format: date-time
+      accommodations:
+        description: 'The accommodations in this location'
+        type: '\Accommodation[]|\ArrayCollection'
     required:
       - name
       - publicAccess
