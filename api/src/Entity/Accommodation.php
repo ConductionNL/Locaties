@@ -9,6 +9,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * A room or other accommodation that can facilitate people.
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
@@ -164,6 +166,8 @@ class Accommodation
     private $resources = [];
 
     /**
+     * @var Place The location this accommodation belongs to
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="accommodations")
      * @ORM\JoinColumn(nullable=false)

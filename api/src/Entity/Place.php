@@ -12,7 +12,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * A building or terrain with an address that can host accommodations.
+ *
+ * @ApiResource(
+ *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
+ *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
  */
 class Place
@@ -180,6 +185,8 @@ class Place
     private $closingTime;
 
     /**
+     * @var Accommodation[]|ArrayCollection The accommodations in this location
+     * @Groups({"read", "write"})
      * @ORM\OneToMany(targetEntity="App\Entity\Accommodation", mappedBy="place", orphanRemoval=true)
      */
     private $accommodations;
