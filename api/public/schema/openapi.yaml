@@ -1851,12 +1851,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-01-13 13:24:58'
+        example: '2020-03-09 12:55:36'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-01-13 13:24:58'
+        example: '2020-03-09 12:55:36'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
@@ -1920,12 +1920,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-01-13 13:24:58'
+        example: '2020-03-09 12:55:36'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-01-13 13:24:58'
+        example: '2020-03-09 12:55:36'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
