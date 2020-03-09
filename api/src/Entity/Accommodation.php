@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * A room or other accommodation that can facilitate people.
@@ -169,6 +170,7 @@ class Accommodation
      * @var Place The location this accommodation belongs to
      *
      * @Groups({"read","write"})
+     * @MaxDepth(1)
      * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="accommodations")
      * @ORM\JoinColumn(nullable=false)
      */
