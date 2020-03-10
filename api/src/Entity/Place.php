@@ -37,7 +37,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *              }
  *          },
  *          "get_audit_trail"={
- *              "path"="/places/{id}/audit_trial",
+ *              "path"="/places/{id}/audit_trail",
  *              "method"="get",
  *              "swagger_context" = {
  *                  "summary"="Audittrail",
