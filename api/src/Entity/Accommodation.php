@@ -3,6 +3,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -14,9 +20,36 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
- *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
+ *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
+ *     itemOperations={
+ *          "get",
+ *          "put",
+ *          "delete",
+ *          "get_change_logs"={
+ *              "path"="/accomodations/{id}/change_log",
+ *              "method"="get",
+ *              "swagger_context" = {
+ *                  "summary"="Changelogs",
+ *                  "description"="Gets al the change logs for this resource"
+ *              }
+ *          },
+ *          "get_audit_trail"={
+ *              "path"="/accomodations/{id}/audit_trial",
+ *              "method"="get",
+ *              "swagger_context" = {
+ *                  "summary"="Audittrail",
+ *                  "description"="Gets the audit trail for this resource"
+ *              }
+ *          }
+ *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AccommodationRepository")
+ * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * 
+ * @ApiFilter(BooleanFilter::class)
+ * @ApiFilter(OrderFilter::class)
+ * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
+ * @ApiFilter(SearchFilter::class)
  */
 class Accommodation
 {
@@ -33,9 +66,9 @@ class Accommodation
 
     /**
      * @var string The name of this accommodation is displayed as a title to end users
-     *
      * @example My Accommodation
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
@@ -47,9 +80,9 @@ class Accommodation
 
     /**
      * @var string The description of this accommodation is displayed to end users as additional information
-     *
      * @example This is the best accommodation ever
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
@@ -60,9 +93,9 @@ class Accommodation
 
     /**
      * @var string The category this accomodation falls into
-     *
      * @example Restaurant
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
@@ -74,9 +107,9 @@ class Accommodation
 
     /**
      * @var string The floor surface area of the accommodation
-     *
      * @example 25 m^2
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
@@ -88,9 +121,9 @@ class Accommodation
 
     /**
      * @var bool Answers the question if pets are allowed or not
-     *
      * @example true
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
@@ -99,9 +132,9 @@ class Accommodation
 
     /**
      * @var bool Answers the question if the accomodation is wheelchair accessible
-     *
      * @example true
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
@@ -110,9 +143,9 @@ class Accommodation
 
     /**
      * @var int The number of available toilets at the accommodation
-     *
      * @example 10
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer")
      * @Assert\NotNull
@@ -121,9 +154,9 @@ class Accommodation
 
     /**
      * @var int The floor level the accommodation is situated on
-     *
      * @example 10
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer")
      * @Assert\NotNull
@@ -132,9 +165,10 @@ class Accommodation
 
     /**
      * @var int The maximum number of attendees the accommodation can facilitate
-     *
      * @example 10
      *
+     * 
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer")
      * @Assert\NotNull
@@ -143,9 +177,9 @@ class Accommodation
 
     /**
      * @var string The product this accommodation is related to
-     *
      * @example My Accommodation
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
@@ -157,9 +191,9 @@ class Accommodation
 
     /**
      * @var array|string[] Resources available in this accommodation
-     *
      * @example My Accommodation
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="array", length=255)
      * @Assert\NotNull
@@ -175,6 +209,24 @@ class Accommodation
      * @ORM\JoinColumn(nullable=false)
      */
     private $place;
+    
+    /**
+     * @var Datetime $dateCreated The moment this resource was created
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateCreated;
+    
+    /**
+     * @var Datetime $dateModified  The moment this resource last Modified
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateModified;
 
     public function getId(): ?string
     {
@@ -335,5 +387,29 @@ class Accommodation
         $this->place = $place;
 
         return $this;
+    }
+    
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+    	return $this->dateCreated;
+    }
+    
+    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    {
+    	$this->dateCreated= $dateCreated;
+    	
+    	return $this;
+    }
+    
+    public function getDateModified(): ?\DateTimeInterface
+    {
+    	return $this->dateModified;
+    }
+    
+    public function setDateModified(\DateTimeInterface $dateModified): self
+    {
+    	$this->dateModified = $dateModified;
+    	
+    	return $this;
     }
 }

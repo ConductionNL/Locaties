@@ -3,6 +3,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -17,9 +23,36 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
- *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
+ *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
+ *     itemOperations={
+ *          "get",
+ *          "put",
+ *          "delete",
+ *          "get_change_logs"={
+ *              "path"="/places/{id}/change_log",
+ *              "method"="get",
+ *              "swagger_context" = {
+ *                  "summary"="Changelogs",
+ *                  "description"="Gets al the change logs for this resource"
+ *              }
+ *          },
+ *          "get_audit_trail"={
+ *              "path"="/places/{id}/audit_trial",
+ *              "method"="get",
+ *              "swagger_context" = {
+ *                  "summary"="Audittrail",
+ *                  "description"="Gets the audit trail for this resource"
+ *              }
+ *          }
+ *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
+ * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * 
+ * @ApiFilter(BooleanFilter::class)
+ * @ApiFilter(OrderFilter::class)
+ * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
+ * @ApiFilter(SearchFilter::class)
  */
 class Place
 {
@@ -39,6 +72,7 @@ class Place
      *
      * @example My Place
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
@@ -53,6 +87,7 @@ class Place
      *
      * @example This is the best place ever
      *
+     * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
@@ -63,9 +98,9 @@ class Place
 
     /**
      * @var string Bagnummeraanduiding of this Address
-     *
      * @example 0363200000218908
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=16, nullable=true)
      * @Assert\Length(
@@ -75,10 +110,10 @@ class Place
     private $bagId;
 
     /**
-     * @var string Website of this Place
-     *
+     * @var string Website of this Place     
      * @example https://location.com
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
@@ -88,10 +123,10 @@ class Place
     private $url;
 
     /**
-     * @var string Phone number of this Place
-     *
+     * @var string Phone number of this Place     
      * @example +31 (0)26 355 7772
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
@@ -101,10 +136,10 @@ class Place
     private $telephone;
 
     /**
-     * @var string Logo of this Place
-     *
+     * @var string Logo of this Place     
      * @example https://location.com/logo.svg
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
@@ -115,9 +150,9 @@ class Place
 
     /**
      * @var string Photo of this Place
-     *
      * @example https://location.com/photo.jpg
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
@@ -128,9 +163,9 @@ class Place
 
     /**
      * @var string Map of this Place
-     *
      * @example https://location.com/map.pdf
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
@@ -141,9 +176,9 @@ class Place
 
     /**
      * @var bool Answers the question if the place is publicly accessible
-     *
      * @example true
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
@@ -152,9 +187,9 @@ class Place
 
     /**
      * @var bool Answers the question if smoking is allowed in this place
-     *
      * @example true
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
      * @Assert\NotNull
@@ -163,9 +198,9 @@ class Place
 
     /**
      * @var DateTime the opening time of the location
-     *
      * @example 08:00
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="datetime")
      * @Assert\NotNull
@@ -175,9 +210,9 @@ class Place
 
     /**
      * @var DateTime the closing time of the location
-     *
      * @example 18:00
      *
+     * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="datetime")
      * @Assert\NotNull
@@ -192,6 +227,24 @@ class Place
      * @ORM\OneToMany(targetEntity="App\Entity\Accommodation", mappedBy="place", orphanRemoval=true)
      */
     private $accommodations;
+    
+    /**
+     * @var Datetime $dateCreated The moment this resource was created
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateCreated;
+    
+    /**
+     * @var Datetime $dateModified  The moment this resource last Modified
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateModified;
 
     public function __construct()
     {
@@ -376,5 +429,29 @@ class Place
         }
 
         return $this;
+    }
+    
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+    	return $this->dateCreated;
+    }
+    
+    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    {
+    	$this->dateCreated= $dateCreated;
+    	
+    	return $this;
+    }
+    
+    public function getDateModified(): ?\DateTimeInterface
+    {
+    	return $this->dateModified;
+    }
+    
+    public function setDateModified(\DateTimeInterface $dateModified): self
+    {
+    	$this->dateModified = $dateModified;
+    	
+    	return $this;
     }
 }
