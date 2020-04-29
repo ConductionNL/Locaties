@@ -5689,12 +5689,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
     required: []
   AuditTrail-write:
     properties:
@@ -5742,12 +5742,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
     required: []
   ChangeLog-write:
     properties:
@@ -5813,12 +5813,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -5888,12 +5888,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-04-21 13:08:21'
+        example: '2020-04-29 09:35:04'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
