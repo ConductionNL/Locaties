@@ -49,7 +49,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -111,7 +111,7 @@ class Place
     private $bagId;
 
     /**
-     * @var string Website of this Place     
+     * @var string Website of this Place
      * @example https://location.com
      *
      * @Gedmo\Versioned
@@ -124,7 +124,7 @@ class Place
     private $url;
 
     /**
-     * @var string Phone number of this Place     
+     * @var string Phone number of this Place
      * @example +31 (0)26 355 7772
      *
      * @Gedmo\Versioned
@@ -137,7 +137,7 @@ class Place
     private $telephone;
 
     /**
-     * @var string Logo of this Place     
+     * @var string Logo of this Place
      * @example https://location.com/logo.svg
      *
      * @Gedmo\Versioned
@@ -228,7 +228,7 @@ class Place
      * @ORM\OneToMany(targetEntity="App\Entity\Accommodation", mappedBy="place", orphanRemoval=true)
      */
     private $accommodations;
-    
+
     /**
      * @var Datetime $dateCreated The moment this resource was created
      *
@@ -237,12 +237,12 @@ class Place
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
-    
+
     /**
      * @var Datetime $dateModified  The moment this resource last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
@@ -431,28 +431,28 @@ class Place
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateCreated;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
 }
