@@ -44,15 +44,19 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *          }
  *     },
  * )
- * @ORM\Entity(repositoryClass="App\Repository\AccommodationPropRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AccommodationPropertyRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- *
+ * @Table(name="accommodation_properties",
+ *    uniqueConstraints={
+ *        @UniqueConstraint(name="accommodation_property",
+ *            columns={"accommodation", "property"})
+ *    }
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class)
  */
-class AccommodationProp
+class AccommodationProperty
 {
     /**
      * @var UuidInterface The UUID identifier of this object
@@ -86,23 +90,23 @@ class AccommodationProp
     /**
      * @var string accommodationProp key
      *
-     * @example accommodationProp key
+     * @example 4126
      *
-     * @Gedmo\Versioned
+
      * @Groups({"read"})
      */
     private $key;
 
     /**
-     * @Groups({"read","write"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProps")
+     * @Groups({"read"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProperties")
      * @MaxDepth(1)
      */
     private $property;
 
     /**
      * @Groups({"read","write"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Accommodation", inversedBy="accommodationProps")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Accommodation", inversedBy="accommodationProperties")
      * @MaxDepth(1)
      */
     private $accommodation;
@@ -152,12 +156,6 @@ class AccommodationProp
         return $this->property;
     }
 
-    public function setProperty(?property $property): self
-    {
-        $this->property = $property;
-
-        return $this;
-    }
 
     public function getAccommodation(): ?accommodation
     {

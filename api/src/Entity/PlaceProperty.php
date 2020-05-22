@@ -44,15 +44,20 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *          }
  *     },
  * )
- * @ORM\Entity(repositoryClass="App\Repository\PlacePropRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PlacePropertyRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
  *
+ * @Table(name="place_properties",
+ *    uniqueConstraints={
+ *        @UniqueConstraint(name="place_property",
+ *            columns={"place", "property"})
+ *    }
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class)
  */
-class PlaceProp
+class PlaceProperty
 {
     /**
      * @var UuidInterface The UUID identifier of this object
@@ -86,15 +91,14 @@ class PlaceProp
     /**
      * @var string placeProp key
      *
-     * @example placeProp key
+     * @example 4123
      *
-     * @Gedmo\Versioned
      * @Groups({"read"})
      */
     private $key;
 
     /**
-     * @Groups({"read","write"})
+     * @Groups({"read"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProps")
      * @MaxDepth(1)
      */
@@ -102,7 +106,7 @@ class PlaceProp
 
     /**
      * @Groups({"read","write"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="placeProps")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="placeProperties")
      * @MaxDepth(1)
      */
     private $place;
@@ -152,12 +156,6 @@ class PlaceProp
         return $this->property;
     }
 
-    public function setProperty(?property $property): self
-    {
-        $this->property = $property;
-
-        return $this;
-    }
 
     public function getPlace(): ?place
     {

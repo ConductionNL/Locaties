@@ -231,10 +231,10 @@ class Place
 
     /**
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProp", mappedBy="place")
+     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProperty", mappedBy="place")
      * @MaxDepth(1)
      */
-    private $placeProps;
+    private $placeProperties;
 
     /**
      * @var Datetime $dateCreated The moment this resource was created
@@ -257,7 +257,7 @@ class Place
     public function __construct()
     {
         $this->accommodations = new ArrayCollection();
-        $this->placeProps = new ArrayCollection();
+        $this->placeProperties = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -441,30 +441,30 @@ class Place
     }
 
     /**
-     * @return Collection|PlaceProp[]
+     * @return Collection|PlaceProperty[]
      */
-    public function getPlaceProps(): Collection
+    public function getPlaceProperties(): Collection
     {
-        return $this->placeProps;
+        return $this->placeProperties;
     }
 
-    public function addPlaceProp(PlaceProp $placeProp): self
+    public function addPlaceProperty(PlaceProperty $placeProperty): self
     {
-        if (!$this->placeProps->contains($placeProp)) {
-            $this->placeProps[] = $placeProp;
-            $placeProp->setPlace($this);
+        if (!$this->placeProperties->contains($placeProperty)) {
+            $this->placeProperties[] = $placeProperty;
+            $placeProperty->setPlace($this);
         }
 
         return $this;
     }
 
-    public function removePlaceProp(PlaceProp $placeProp): self
+    public function removePlaceProp(PlaceProperty $placeProperty): self
     {
-        if ($this->placeProps->contains($placeProp)) {
-            $this->placeProps->removeElement($placeProp);
+        if ($this->placeProperties->contains($placeProperty)) {
+            $this->placeProperties->removeElement($placeProperty);
             // set the owning side to null (unless already changed)
-            if ($placeProp->setPlace() === $this) {
-                $placeProp->setPlace(null);
+            if ($placeProperty->setPlace() === $this) {
+                $placeProperty->setPlace(null);
             }
         }
 

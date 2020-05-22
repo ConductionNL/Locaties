@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\AccommodationProp;
+use App\Entity\AccommodationProperty;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method AccommodationProp|null find($id, $lockMode = null, $lockVersion = null)
- * @method AccommodationProp|null findOneBy(array $criteria, array $orderBy = null)
- * @method AccommodationProp[]    findAll()
- * @method AccommodationProp[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AccommodationProperty|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AccommodationProperty|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AccommodationProperty[]    findAll()
+ * @method AccommodationProperty[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AccommodationPropRepository extends ServiceEntityRepository
+class AccommodationPropertyRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AccommodationProp::class);
+        parent::__construct($registry, AccommodationProperty::class);
     }
 
     // /**

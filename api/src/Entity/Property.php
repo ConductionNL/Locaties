@@ -115,17 +115,17 @@ class Property
 
     /**
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProp", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProperty", mappedBy="property")
      * @MaxDepth(1)
      */
-    private $placeProps;
+    private $placeProperties;
 
     /**
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProp", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProperty", mappedBy="property")
      * @MaxDepth(1)
      */
-    private $accommodationProps;
+    private $accommodationProperties;
 
     /**
      * @var Datetime $dateCreated The moment this resource was created
@@ -148,8 +148,8 @@ class Property
 
     public function __construct()
     {
-        $this->placeProps = new ArrayCollection();
-        $this->accommodationProps = new ArrayCollection();
+        $this->placeProperties = new ArrayCollection();
+        $this->accommodationProperties = new ArrayCollection();
     }
 
     public function getId()
@@ -219,30 +219,30 @@ class Property
     }
 
     /**
-     * @return Collection|PlaceProp[]
+     * @return Collection|PlaceProperty[]
      */
-    public function getPlaceProps(): Collection
+    public function getPlaceProperties(): Collection
     {
-        return $this->placeProps;
+        return $this->placeProperties;
     }
 
-    public function addPlaceProp(PlaceProp $placeProp): self
+    public function addPlaceProperty(PlaceProperty $placeProperty): self
     {
-        if (!$this->placeProps->contains($placeProp)) {
-            $this->placeProps[] = $placeProp;
-            $placeProp->setProperty($this);
+        if (!$this->placeProperties->contains($placeProperty)) {
+            $this->placeProperties[] = $placeProperty;
+            $placeProperty->setProperty($this);
         }
 
         return $this;
     }
 
-    public function removePlaceProp(PlaceProp $placeProp): self
+    public function removePlaceProperty(PlaceProperty $placeProperty): self
     {
-        if ($this->placeProps->contains($placeProp)) {
-            $this->placeProps->removeElement($placeProp);
+        if ($this->placeProperties->contains($placeProperty)) {
+            $this->placeProperties->removeElement($placeProperty);
             // set the owning side to null (unless already changed)
-            if ($placeProp->setProperty() === $this) {
-                $placeProp->setProperty(null);
+            if ($placeProperty->setProperty() === $this) {
+                $placeProperty->setProperty(null);
             }
         }
 
@@ -250,30 +250,30 @@ class Property
     }
 
     /**
-     * @return Collection|AccommodationProp[]
+     * @return Collection|AccommodationProperty[]
      */
-    public function getAccommodationProps(): Collection
+    public function getAccommodationProperties(): Collection
     {
-        return $this->accommodationProps;
+        return $this->accommodationProperties;
     }
 
-    public function addAccommodationProp(AccomodationProp $accommodationProp): self
+    public function addAccommodationProperty(AccommodationProperty $accommodationProperty): self
     {
-        if (!$this->accommodationProps->contains($accommodationProp)) {
-            $this->accommodationProps[] = $accommodationProp;
-            $accommodationProp->setProperty($this);
+        if (!$this->accommodationProperties->contains($accommodationProperty)) {
+            $this->accommodationProperties[] = $accommodationProperty;
+            $accommodationProperty->setProperty($this);
         }
 
         return $this;
     }
 
-    public function removeAccommodationProp(AccomodationProp $accommodationProp): self
+    public function removeAccommodationProperty(AccommodationProperty $accommodationProperty): self
     {
-        if ($this->accommodationProps->contains($accommodationProp)) {
-            $this->accommodationProps->removeElement($accommodationProp);
+        if ($this->accommodationProperties->contains($accommodationProperty)) {
+            $this->accommodationProperties->removeElement($accommodationProperty);
             // set the owning side to null (unless already changed)
-            if ($accommodationProp->setProperty() === $this) {
-                $accommodationProp->setProperty(null);
+            if ($accommodationProperty->setProperty() === $this) {
+                $accommodationProperty->setProperty(null);
             }
         }
 
