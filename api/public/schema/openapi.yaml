@@ -15,750 +15,6 @@ info:
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
-  /accommodation_props:
-    get:
-      tags:
-        - AccommodationProp
-      operationId: getAccommodationPropCollection
-      summary: 'Retrieves the collection of AccommodationProp resources.'
-      responses:
-        200:
-          description: 'AccommodationProp collection response'
-          content:
-            application/ld+json:
-              schema:
-                type: object
-                properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/AccommodationProp:jsonld-read' } }
-                  'hydra:totalItems': { type: integer, minimum: 0 }
-                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
-                required:
-                  - 'hydra:member'
-            application/json+ld:
-              schema:
-                type: object
-                properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/AccommodationProp:jsonld-read' } }
-                  'hydra:totalItems': { type: integer, minimum: 0 }
-                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
-                required:
-                  - 'hydra:member'
-            application/hal+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+hal:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/vnd.api+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+vnd.api:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/health+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+health:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            application/x-yaml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            text/csv:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-            text/html:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccommodationProp-read'
-      parameters:
-        -
-          name: 'order[id]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[value]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[dateCreated]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[dateModified]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'dateCreated[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: value
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'value[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: page
-          in: query
-          required: false
-          description: 'The collection page number'
-          schema:
-            type: integer
-            default: 1
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-        -
-          name: Link
-          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
-          in: header
-        -
-          name: 'extend[]'
-          required: false
-          description: 'An array of nested objects to include in the return object'
-          in: query
-          schema:
-            type: array
-        -
-          name: 'fields[]'
-          required: false
-          description: 'An array of fields to return in output, wil return all fields is not supplied'
-          in: query
-          schema:
-            type: array
-        -
-          name: validOn
-          required: false
-          description: 'Returns object as valid on a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validFrom
-          required: false
-          description: 'Returns objects valid from a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validUntil
-          required: false
-          description: 'Returns objects valid until a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-      produces:
-        - application/health+json
-    post:
-      tags:
-        - AccommodationProp
-      operationId: postAccommodationPropCollection
-      summary: 'Creates a AccommodationProp resource.'
-      responses:
-        201:
-          description: 'AccommodationProp resource created'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-          links:
-            GetAccommodationPropItem:
-              parameters:
-                id: '$response.body#/id'
-              operationId: getAccommodationPropItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /accommodation_props/{id}`.'
-        400:
-          description: 'Invalid input'
-        404:
-          description: 'Resource not found'
-      requestBody:
-        content:
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp:jsonld-write'
-          application/json+ld:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp:jsonld-write'
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+hal:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+vnd.api:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/health+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+health:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-        description: 'The new AccommodationProp resource'
-      parameters:
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-  '/accommodation_props/{id}':
-    get:
-      tags:
-        - AccommodationProp
-      operationId: getAccommodationPropItem
-      summary: 'Retrieves a AccommodationProp resource.'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-        -
-          name: Link
-          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
-          in: header
-        -
-          name: 'extend[]'
-          required: false
-          description: 'An array of nested objects to include in the return object'
-          in: query
-          schema:
-            type: array
-        -
-          name: 'fields[]'
-          required: false
-          description: 'An array of fields to return in output, wil return all fields is not supplied'
-          in: query
-          schema:
-            type: array
-        -
-          name: validOn
-          required: false
-          description: 'Returns object as valid on a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validFrom
-          required: false
-          description: 'Returns objects valid from a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validUntil
-          required: false
-          description: 'Returns objects valid until a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-      responses:
-        200:
-          description: 'AccommodationProp resource response'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-        404:
-          description: 'Resource not found'
-      produces:
-        - application/health+json
-    put:
-      tags:
-        - AccommodationProp
-      operationId: putAccommodationPropItem
-      summary: 'Replaces the AccommodationProp resource.'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-      responses:
-        200:
-          description: 'AccommodationProp resource updated'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/AccommodationProp-read'
-        400:
-          description: 'Invalid input'
-        404:
-          description: 'Resource not found'
-      requestBody:
-        content:
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp:jsonld-write'
-          application/json+ld:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp:jsonld-write'
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+hal:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+vnd.api:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/health+json:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/json+health:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/AccommodationProp-write'
-        description: 'The updated AccommodationProp resource'
-    delete:
-      tags:
-        - AccommodationProp
-      operationId: deleteAccommodationPropItem
-      summary: 'Removes the AccommodationProp resource.'
-      responses:
-        204:
-          description: 'AccommodationProp resource deleted'
-        404:
-          description: 'Resource not found'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
   /accommodations:
     get:
       tags:
@@ -3911,750 +3167,6 @@ paths:
             schema:
               $ref: '#/components/schemas/ChangeLog-write'
         description: 'The updated ChangeLog resource'
-  /place_props:
-    get:
-      tags:
-        - PlaceProp
-      operationId: getPlacePropCollection
-      summary: 'Retrieves the collection of PlaceProp resources.'
-      responses:
-        200:
-          description: 'PlaceProp collection response'
-          content:
-            application/ld+json:
-              schema:
-                type: object
-                properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/PlaceProp:jsonld-read' } }
-                  'hydra:totalItems': { type: integer, minimum: 0 }
-                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
-                required:
-                  - 'hydra:member'
-            application/json+ld:
-              schema:
-                type: object
-                properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/PlaceProp:jsonld-read' } }
-                  'hydra:totalItems': { type: integer, minimum: 0 }
-                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
-                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
-                required:
-                  - 'hydra:member'
-            application/hal+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/json+hal:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/vnd.api+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/json+vnd.api:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/health+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/json+health:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            application/x-yaml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            text/csv:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-            text/html:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PlaceProp-read'
-      parameters:
-        -
-          name: 'order[id]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[value]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[dateCreated]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[dateModified]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'dateCreated[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: value
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'value[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: page
-          in: query
-          required: false
-          description: 'The collection page number'
-          schema:
-            type: integer
-            default: 1
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-        -
-          name: Link
-          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
-          in: header
-        -
-          name: 'extend[]'
-          required: false
-          description: 'An array of nested objects to include in the return object'
-          in: query
-          schema:
-            type: array
-        -
-          name: 'fields[]'
-          required: false
-          description: 'An array of fields to return in output, wil return all fields is not supplied'
-          in: query
-          schema:
-            type: array
-        -
-          name: validOn
-          required: false
-          description: 'Returns object as valid on a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validFrom
-          required: false
-          description: 'Returns objects valid from a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validUntil
-          required: false
-          description: 'Returns objects valid until a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-      produces:
-        - application/health+json
-    post:
-      tags:
-        - PlaceProp
-      operationId: postPlacePropCollection
-      summary: 'Creates a PlaceProp resource.'
-      responses:
-        201:
-          description: 'PlaceProp resource created'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-          links:
-            GetPlacePropItem:
-              parameters:
-                id: '$response.body#/id'
-              operationId: getPlacePropItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /place_props/{id}`.'
-        400:
-          description: 'Invalid input'
-        404:
-          description: 'Resource not found'
-      requestBody:
-        content:
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp:jsonld-write'
-          application/json+ld:
-            schema:
-              $ref: '#/components/schemas/PlaceProp:jsonld-write'
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+hal:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+vnd.api:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/health+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+health:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-        description: 'The new PlaceProp resource'
-      parameters:
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-  '/place_props/{id}':
-    get:
-      tags:
-        - PlaceProp
-      operationId: getPlacePropItem
-      summary: 'Retrieves a PlaceProp resource.'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-        -
-          name: Link
-          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
-          in: header
-        -
-          name: 'extend[]'
-          required: false
-          description: 'An array of nested objects to include in the return object'
-          in: query
-          schema:
-            type: array
-        -
-          name: 'fields[]'
-          required: false
-          description: 'An array of fields to return in output, wil return all fields is not supplied'
-          in: query
-          schema:
-            type: array
-        -
-          name: validOn
-          required: false
-          description: 'Returns object as valid on a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validFrom
-          required: false
-          description: 'Returns objects valid from a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validUntil
-          required: false
-          description: 'Returns objects valid until a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-      responses:
-        200:
-          description: 'PlaceProp resource response'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-        404:
-          description: 'Resource not found'
-      produces:
-        - application/health+json
-    put:
-      tags:
-        - PlaceProp
-      operationId: putPlacePropItem
-      summary: 'Replaces the PlaceProp resource.'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-      responses:
-        200:
-          description: 'PlaceProp resource updated'
-          content:
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/json+ld:
-              schema:
-                $ref: '#/components/schemas/PlaceProp:jsonld-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+vnd.api:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/PlaceProp-read'
-        400:
-          description: 'Invalid input'
-        404:
-          description: 'Resource not found'
-      requestBody:
-        content:
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp:jsonld-write'
-          application/json+ld:
-            schema:
-              $ref: '#/components/schemas/PlaceProp:jsonld-write'
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+hal:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+vnd.api:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/health+json:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/json+health:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/PlaceProp-write'
-        description: 'The updated PlaceProp resource'
-    delete:
-      tags:
-        - PlaceProp
-      operationId: deletePlacePropItem
-      summary: 'Removes the PlaceProp resource.'
-      responses:
-        204:
-          description: 'PlaceProp resource deleted'
-        404:
-          description: 'Resource not found'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
   /places:
     get:
       tags:
@@ -5988,21 +4500,21 @@ paths:
           description: 'Resource not found'
       produces:
         - application/health+json
-  /properties:
+  /resources:
     get:
       tags:
-        - Property
-      operationId: getPropertyCollection
-      summary: 'Retrieves the collection of Property resources.'
+        - Resource
+      operationId: getResourceCollection
+      summary: 'Retrieves the collection of Resource resources.'
       responses:
         200:
-          description: 'Property collection response'
+          description: 'Resource collection response'
           content:
             application/ld+json:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Property:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Resource:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -6012,7 +4524,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Property:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Resource:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -6022,57 +4534,57 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Property-read'
+                  $ref: '#/components/schemas/Resource-read'
       parameters:
         -
           name: 'order[id]'
@@ -6102,7 +4614,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[key]'
+          name: 'order[amount]'
           in: query
           required: false
           schema:
@@ -6110,72 +4622,6 @@ paths:
             enum:
               - asc
               - desc
-        -
-          name: 'order[dateCreated]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'order[dateModified]'
-          in: query
-          required: false
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
-        -
-          name: 'dateCreated[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: id
           in: query
@@ -6225,13 +4671,13 @@ paths:
           style: form
           explode: true
         -
-          name: key
+          name: amount
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'key[]'
+          name: 'amount[]'
           in: query
           required: false
           schema:
@@ -6240,30 +4686,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -6347,58 +4769,58 @@ paths:
         - application/health+json
     post:
       tags:
-        - Property
-      operationId: postPropertyCollection
-      summary: 'Creates a Property resource.'
+        - Resource
+      operationId: postResourceCollection
+      summary: 'Creates a Resource resource.'
       responses:
         201:
-          description: 'Property resource created'
+          description: 'Resource resource created'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
           links:
-            GetPropertyItem:
+            GetResourceItem:
               parameters:
                 id: '$response.body#/id'
-              operationId: getPropertyItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /properties/{id}`.'
+              operationId: getResourceItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /resources/{id}`.'
         400:
           description: 'Invalid input'
         404:
@@ -6407,44 +4829,44 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Property:jsonld-write'
+              $ref: '#/components/schemas/Resource:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Property:jsonld-write'
+              $ref: '#/components/schemas/Resource:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Property-write'
-        description: 'The new Property resource'
+              $ref: '#/components/schemas/Resource-write'
+        description: 'The new Resource resource'
       parameters:
         -
           name: Authorization
@@ -6475,12 +4897,12 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-  '/properties/{id}':
+  '/resources/{id}':
     get:
       tags:
-        - Property
-      operationId: getPropertyItem
-      summary: 'Retrieves a Property resource.'
+        - Resource
+      operationId: getResourceItem
+      summary: 'Retrieves a Resource resource.'
       parameters:
         -
           name: id
@@ -6561,56 +4983,56 @@ paths:
           in: query
       responses:
         200:
-          description: 'Property resource response'
+          description: 'Resource resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
         404:
           description: 'Resource not found'
       produces:
         - application/health+json
     put:
       tags:
-        - Property
-      operationId: putPropertyItem
-      summary: 'Replaces the Property resource.'
+        - Resource
+      operationId: putResourceItem
+      summary: 'Replaces the Resource resource.'
       parameters:
         -
           name: id
@@ -6649,47 +5071,47 @@ paths:
           in: header
       responses:
         200:
-          description: 'Property resource updated'
+          description: 'Resource resource updated'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
         400:
           description: 'Invalid input'
         404:
@@ -6698,52 +5120,52 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Property:jsonld-write'
+              $ref: '#/components/schemas/Resource:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Property:jsonld-write'
+              $ref: '#/components/schemas/Resource:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Property-write'
+              $ref: '#/components/schemas/Resource-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Property-write'
-        description: 'The updated Property resource'
+              $ref: '#/components/schemas/Resource-write'
+        description: 'The updated Resource resource'
     delete:
       tags:
-        - Property
-      operationId: deletePropertyItem
-      summary: 'Removes the Property resource.'
+        - Resource
+      operationId: deleteResourceItem
+      summary: 'Removes the Resource resource.'
       responses:
         204:
-          description: 'Property resource deleted'
+          description: 'Resource resource deleted'
         404:
           description: 'Resource not found'
       parameters:
@@ -6785,9 +5207,9 @@ paths:
   '/resources/{id}/audit_trail':
     get:
       tags:
-        - Property
-      operationId: get_audit_trailPropertyItem
-      summary: 'Retrieves a Property resource.'
+        - Resource
+      operationId: get_audit_trailResourceItem
+      summary: 'Retrieves a Resource resource.'
       parameters:
         -
           name: id
@@ -6868,47 +5290,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Property resource response'
+          description: 'Resource resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
         404:
           description: 'Resource not found'
       produces:
@@ -6916,9 +5338,9 @@ paths:
   '/resources/{id}/change_log':
     get:
       tags:
-        - Property
-      operationId: get_change_logsPropertyItem
-      summary: 'Retrieves a Property resource.'
+        - Resource
+      operationId: get_change_logsResourceItem
+      summary: 'Retrieves a Resource resource.'
       parameters:
         -
           name: id
@@ -6999,47 +5421,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Property resource response'
+          description: 'Resource resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
+                $ref: '#/components/schemas/Resource:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Property-read'
+                $ref: '#/components/schemas/Resource-read'
         404:
           description: 'Resource not found'
       produces:
@@ -7087,10 +5509,6 @@ components:
         place:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place-read'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp-read'
         dateCreated:
           readOnly: true
           description: 'The moment this resource was created'
@@ -7101,6 +5519,11 @@ components:
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource-read'
       required:
         - name
         - accommodationCategory
@@ -7158,10 +5581,11 @@ components:
         place:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place-write'
-        accommodationProps:
+        resources:
+          description: 'Resources available in this accommodation'
           type: array
           items:
-            $ref: '#/components/schemas/AccommodationProp-write'
+            $ref: '#/components/schemas/Resource-write'
     'Accommodation:jsonld-read':
       type: object
       description: 'A room or other accommodation that can facilitate people.'
@@ -7212,10 +5636,6 @@ components:
         place:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place:jsonld-read'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp:jsonld-read'
         dateCreated:
           readOnly: true
           description: 'The moment this resource was created'
@@ -7226,6 +5646,11 @@ components:
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource:jsonld-read'
       required:
         - name
         - accommodationCategory
@@ -7292,122 +5717,11 @@ components:
         place:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place:jsonld-write'
-        accommodationProps:
+        resources:
+          description: 'Resources available in this accommodation'
           type: array
           items:
-            $ref: '#/components/schemas/AccommodationProp:jsonld-write'
-    AccommodationProp-read:
-      type: object
-      description: ''
-      properties:
-        id:
-          readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
-          type: string
-          format: uuid
-        value:
-          description: 'accommodationProp value'
-          type: string
-        key:
-          readOnly: true
-          description: 'accommodationProp key'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property-read'
-        accommodation:
-          $ref: '#/components/schemas/Accommodation-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
-          type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
-      required:
-        - value
-    AccommodationProp-write:
-      type: object
-      description: ''
-      required:
-        - value
-      properties:
-        value:
-          description: 'accommodationProp value'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property-write'
-        accommodation:
-          $ref: '#/components/schemas/Accommodation-write'
-    'AccommodationProp:jsonld-read':
-      type: object
-      description: ''
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
-          type: string
-          format: uuid
-        value:
-          description: 'accommodationProp value'
-          type: string
-        key:
-          readOnly: true
-          description: 'accommodationProp key'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property:jsonld-read'
-        accommodation:
-          $ref: '#/components/schemas/Accommodation:jsonld-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
-          type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
-      required:
-        - value
-    'AccommodationProp:jsonld-write':
-      type: object
-      description: ''
-      required:
-        - value
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        value:
-          description: 'accommodationProp value'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property:jsonld-write'
-        accommodation:
-          $ref: '#/components/schemas/Accommodation:jsonld-write'
+            $ref: '#/components/schemas/Resource:jsonld-write'
     AuditTrail-read:
       type: object
       description: 'An resource representing a log line.'
@@ -7849,10 +6163,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Accommodation-read'
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp-read'
         dateCreated:
           readOnly: true
           description: 'The moment this resource was created'
@@ -7926,10 +6236,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Accommodation-write'
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp-write'
     'Place:jsonld-read':
       type: object
       description: 'A building or terrain with an address that can host accommodations.'
@@ -7994,10 +6300,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Accommodation:jsonld-read'
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp:jsonld-read'
         dateCreated:
           readOnly: true
           description: 'The moment this resource was created'
@@ -8080,58 +6382,53 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Accommodation:jsonld-write'
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp:jsonld-write'
-    PlaceProp-read:
+    Resource-read:
       type: object
       description: ''
       properties:
         id:
           readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
           type: string
           format: uuid
-        value:
-          description: 'placeProp value'
+        name:
+          description: 'The name of this resource'
           type: string
-        key:
-          readOnly: true
-          description: 'placeProp key'
+        description:
+          description: 'The description of this resource'
           type: string
-        property:
-          $ref: '#/components/schemas/Property-read'
-        place:
-          $ref: '#/components/schemas/Place-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
+        amount:
+          description: 'The amount in which this resource is available'
           type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
+        accommodations:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation-read'
       required:
-        - value
-    PlaceProp-write:
+        - name
+        - amount
+    Resource-write:
       type: object
       description: ''
       required:
-        - value
+        - name
+        - amount
       properties:
-        value:
-          description: 'placeProp value'
+        name:
+          description: 'The name of this resource'
           type: string
-        property:
-          $ref: '#/components/schemas/Property-write'
-        place:
-          $ref: '#/components/schemas/Place-write'
-    'PlaceProp:jsonld-read':
+        description:
+          description: 'The description of this resource'
+          type: string
+        amount:
+          description: 'The amount in which this resource is available'
+          type: string
+        accommodations:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Accommodation-write'
+    'Resource:jsonld-read':
       type: object
       description: ''
       properties:
@@ -8146,177 +6443,31 @@ components:
           type: string
         id:
           readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
-          type: string
-          format: uuid
-        value:
-          description: 'placeProp value'
-          type: string
-        key:
-          readOnly: true
-          description: 'placeProp key'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property:jsonld-read'
-        place:
-          $ref: '#/components/schemas/Place:jsonld-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
-          type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
-      required:
-        - value
-    'PlaceProp:jsonld-write':
-      type: object
-      description: ''
-      required:
-        - value
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        value:
-          description: 'placeProp value'
-          type: string
-        property:
-          $ref: '#/components/schemas/Property:jsonld-write'
-        place:
-          $ref: '#/components/schemas/Place:jsonld-write'
-    Property-read:
-      type: object
-      description: ''
-      properties:
-        id:
-          readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
           type: string
           format: uuid
         name:
-          description: 'Property name'
+          description: 'The name of this resource'
           type: string
         description:
-          description: 'property description'
+          description: 'The description of this resource'
           type: string
-        key:
-          description: 'key of property'
+        amount:
+          description: 'The amount in which this resource is available'
           type: string
-        placeProps:
+        accommodations:
+          description: 'Resources available in this accommodation'
           type: array
           items:
-            $ref: '#/components/schemas/PlaceProp-read'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
-          type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
+            $ref: '#/components/schemas/Accommodation:jsonld-read'
       required:
         - name
-        - key
-    Property-write:
+        - amount
+    'Resource:jsonld-write':
       type: object
       description: ''
       required:
         - name
-        - key
-      properties:
-        name:
-          description: 'Property name'
-          type: string
-        description:
-          description: 'property description'
-          type: string
-        key:
-          description: 'key of property'
-          type: string
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp-write'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp-write'
-    'Property:jsonld-read':
-      type: object
-      description: ''
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
-          type: string
-          format: uuid
-        name:
-          description: 'Property name'
-          type: string
-        description:
-          description: 'property description'
-          type: string
-        key:
-          description: 'key of property'
-          type: string
-        placeProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceProp:jsonld-read'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp:jsonld-read'
-        dateCreated:
-          readOnly: true
-          description: 'The moment this resource was created'
-          type: string
-          format: date-time
-        dateModified:
-          readOnly: true
-          description: 'The moment this resource last Modified'
-          type: string
-          format: date-time
-      required:
-        - name
-        - key
-    'Property:jsonld-write':
-      type: object
-      description: ''
-      required:
-        - name
-        - key
+        - amount
       properties:
         '@context':
           readOnly: true
@@ -8328,22 +6479,19 @@ components:
           readOnly: true
           type: string
         name:
-          description: 'Property name'
+          description: 'The name of this resource'
           type: string
         description:
-          description: 'property description'
+          description: 'The description of this resource'
           type: string
-        key:
-          description: 'key of property'
+        amount:
+          description: 'The amount in which this resource is available'
           type: string
-        placeProps:
+        accommodations:
+          description: 'Resources available in this accommodation'
           type: array
           items:
-            $ref: '#/components/schemas/PlaceProp:jsonld-write'
-        accommodationProps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccommodationProp:jsonld-write'
+            $ref: '#/components/schemas/Accommodation:jsonld-write'
 definitions:
   Accommodation-read:
     properties:
@@ -8404,7 +6552,9 @@ definitions:
       place:
         description: 'The location this accommodation belongs to'
         type: \Place
-      accommodationProps: []
+      resources:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|resource[]'
     required:
       - name
       - accommodationCategory
@@ -8465,7 +6615,9 @@ definitions:
       place:
         description: 'The location this accommodation belongs to'
         type: \Place
-      accommodationProps: []
+      resources:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|resource[]'
     required:
       - name
       - accommodationCategory
@@ -8476,39 +6628,6 @@ definitions:
       - floorLevel
       - maximumAttendeeCapacity
       - product
-  AccommodationProp-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      value:
-        description: 'accommodationProp value'
-        type: string
-        example: 'accommodationProp value'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      property: []
-      accommodation: []
-    required:
-      - value
-  AccommodationProp-write:
-    properties:
-      value:
-        description: 'accommodationProp value'
-        type: string
-        example: 'accommodationProp value'
-        maxLength: 255
-      property: []
-      accommodation: []
-    required:
-      - value
   AuditTrail-read:
     properties:
       id:
@@ -8613,12 +6732,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
     required: []
   AuditTrail-write:
     properties:
@@ -8666,12 +6785,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
     required: []
   ChangeLog-write:
     properties:
@@ -8737,12 +6856,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -8753,7 +6872,6 @@ definitions:
       accommodations:
         description: 'The accommodations in this location'
         type: '\Accommodation[]|\ArrayCollection'
-      placeProps: []
     required:
       - name
       - publicAccess
@@ -8813,122 +6931,76 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-05-20 14:51:55'
+        example: '2020-04-29 13:57:39'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
         type: '\Accommodation[]|\ArrayCollection'
-      placeProps: []
     required:
       - name
       - publicAccess
       - smokingAllowed
       - openingTime
       - closingTime
-  PlaceProp-read:
+  Resource-read:
     properties:
       id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      value:
-        description: 'placeProp value'
-        type: string
-        example: 'placeProp value'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      property: []
-      place: []
-    required:
-      - value
-  PlaceProp-write:
-    properties:
-      value:
-        description: 'placeProp value'
-        type: string
-        example: 'placeProp value'
-        maxLength: 255
-      property: []
-      place: []
-    required:
-      - value
-  Property-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
+        description: ''
+        type: \UuidInterface
       name:
-        description: 'Property name'
+        description: 'The name of this resource'
         type: string
-        example: 'Property name'
+        example: 'My Accommodation'
         maxLength: 255
       description:
-        description: 'property description'
+        description: 'The description of this resource'
         type: string
-        example: 'Property description'
+        example: 'This is the best accommodation ever'
         maxLength: 2550
-      key:
-        description: 'key of property'
-        type: string
-        example: '4123'
-        maxLength: 200
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      placeProps: []
-      accommodationProps: []
+      amount:
+        description: 'The amount in which this resource is available'
+        type: int
+        example: 'My Accommodation'
+        maxLength: 255
+      accommodations:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|\Accommodation[]'
     required:
       - name
-      - key
-  Property-write:
+      - amount
+  Resource-write:
     properties:
       name:
-        description: 'Property name'
+        description: 'The name of this resource'
         type: string
-        example: 'Property name'
+        example: 'My Accommodation'
         maxLength: 255
       description:
-        description: 'property description'
+        description: 'The description of this resource'
         type: string
-        example: 'Property description'
+        example: 'This is the best accommodation ever'
         maxLength: 2550
-      key:
-        description: 'key of property'
-        type: string
-        example: '4123'
-        maxLength: 200
-      placeProps: []
-      accommodationProps: []
+      amount:
+        description: 'The amount in which this resource is available'
+        type: int
+        example: 'My Accommodation'
+        maxLength: 255
+      accommodations:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|\Accommodation[]'
     required:
       - name
-      - key
+      - amount
 tags:
   -
     name: Accommodation
     description: |
       A room or other accommodation that can facilitate people.
-      
-      
-  -
-    name: AccommodationProp
-    description: |
-      
       
       
   -
@@ -8950,13 +7022,7 @@ tags:
       
       
   -
-    name: PlaceProp
-    description: |
-      
-      
-      
-  -
-    name: Property
+    name: Resource
     description: |
       
       
@@ -8967,15 +7033,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the Property resource'
-      write: 'write right to the Property resource'
+      read: 'read right to the Resource resource'
+      write: 'write right to the Resource resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the Property resource'
-      write: 'write right to the Property resource'
+      read: 'read right to the Resource resource'
+      write: 'write right to the Resource resource'
 host: irc.zaakonline.nl
 servers:
   -

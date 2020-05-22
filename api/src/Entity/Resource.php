@@ -44,7 +44,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *          }
  *     },
  * )
- * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ResourceRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
@@ -52,15 +52,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class)
  */
-class Property
+class Resource
 {
     /**
-     * @var UuidInterface The UUID identifier of this object
-     *
-     * @example e2984465-190a-4562-829e-a8cca81aa35d
+     * @var UuidInterface
      *
      * @Groups({"read"})
-     * @Assert\Uuid
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
@@ -69,9 +66,8 @@ class Property
     private $id;
 
     /**
-     * @var string Property name
-     *
-     * @example Property name
+     * @var string The name of this resource
+     * @example My Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
@@ -84,48 +80,40 @@ class Property
     private $name;
 
     /**
-     * @var string property description
-     *
-     * @example Property description
+     * @var string The description of this resource
+     * @example This is the best accommodation ever
      *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
-     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *     max = 2550
      * )
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @var string key of property
-     *
-     * @example 4123
+     * @var int The amount in which this resource is available
+     * @example My Accommodation
      *
      * @Gedmo\Versioned
-     * @Groups({"read", "write"})
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
      * @Assert\Length(
-     *   max = 200
+     *     max = 255
      * )
+     */
+    private $amount;
+
+    /**
+     * @var ArrayCollection|Accommodation[] Resources available in this accommodation
      *
-     * @ORM\Column(type="string", name="the_key",length=200, unique=true, nullable=false)
-     */
-    private $key;
-
-    /**
      * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProp", mappedBy="property")
      * @MaxDepth(1)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Accommodation", mappedBy="resources")
      */
-    private $placeProps;
-
-    /**
-     * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProp", mappedBy="property")
-     * @MaxDepth(1)
-     */
-    private $accommodationProps;
+    private $accommodations;
 
     /**
      * @var Datetime $dateCreated The moment this resource was created
@@ -145,14 +133,12 @@ class Property
      */
     private $dateModified;
 
-
     public function __construct()
     {
-        $this->placeProps = new ArrayCollection();
-        $this->accommodationProps = new ArrayCollection();
+        $this->accommodations = new ArrayCollection();
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -181,18 +167,45 @@ class Property
         return $this;
     }
 
-    public function getKey(): ?string
+    public function getAmount(): ?int
     {
-        return $this->key;
+        return $this->amount;
     }
 
-    public function setKey(?string $key): self
+    public function setAmount(int $amount): self
     {
-        $this->key = $key;
+        $this->amount = $amount;
 
         return $this;
     }
 
+    /**
+     * @return Collection|Accommodation[]
+     */
+    public function getAccommodations(): Collection
+    {
+        return $this->accommodations;
+    }
+
+    public function addAccommodation(Accommodation $accommodation): self
+    {
+        if (!$this->accommodations->contains($accommodation)) {
+            $this->accommodations[] = $accommodation;
+            $accommodation->addResource($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccommodation(Accommodation $accommodation): self
+    {
+        if ($this->accommodations->contains($accommodation)) {
+            $this->accommodations->removeElement($accommodation);
+            $accommodation->removeResource($this);
+        }
+
+        return $this;
+    }
 
     public function getDateCreated(): ?\DateTimeInterface
     {
@@ -214,68 +227,6 @@ class Property
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
         $this->dateModified = $dateModified;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|PlaceProp[]
-     */
-    public function getPlaceProps(): Collection
-    {
-        return $this->placeProps;
-    }
-
-    public function addPlaceProp(PlaceProp $placeProp): self
-    {
-        if (!$this->placeProps->contains($placeProp)) {
-            $this->placeProps[] = $placeProp;
-            $placeProp->setProperty($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlaceProp(PlaceProp $placeProp): self
-    {
-        if ($this->placeProps->contains($placeProp)) {
-            $this->placeProps->removeElement($placeProp);
-            // set the owning side to null (unless already changed)
-            if ($placeProp->setProperty() === $this) {
-                $placeProp->setProperty(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|AccommodationProp[]
-     */
-    public function getAccommodationProps(): Collection
-    {
-        return $this->accommodationProps;
-    }
-
-    public function addAccommodationProp(AccomodationProp $accommodationProp): self
-    {
-        if (!$this->accommodationProps->contains($accommodationProp)) {
-            $this->accommodationProps[] = $accommodationProp;
-            $accommodationProp->setProperty($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAccommodationProp(AccomodationProp $accommodationProp): self
-    {
-        if ($this->accommodationProps->contains($accommodationProp)) {
-            $this->accommodationProps->removeElement($accommodationProp);
-            // set the owning side to null (unless already changed)
-            if ($accommodationProp->setProperty() === $this) {
-                $accommodationProp->setProperty(null);
-            }
-        }
 
         return $this;
     }
