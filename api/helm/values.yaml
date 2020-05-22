@@ -8,17 +8,14 @@ settings:
   name: lc
   title: Locatie Catalogus
   version: V.0.1
+  id: 
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  type: component
   repro: https://github.com/ConductionNL/locatiecatalogus
   demo: lc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/lc-php
   subdomain: lc  
-  domains:
-    - conduction.nl
-    - zaakonline.nl
-    - huwelijksplanner.online
-    - common-ground.dev
-  domainsJson: ["conduction.nl","zaakonline.nl","huwelijksplanner.online","common-ground.dev"]
+  domain: conduction.nl
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
@@ -27,9 +24,10 @@ settings:
   unit: Common-Ground  
   env: dev
   debug: 1
+  cache: 1
   replicaCount: 1
   corsAllowOrigin: ['*']
-  trustedHosts: '127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?larping\.eu$|^(.+\.)?common-ground\.dev$|^(.+\.)?trouwplanner\.online$|^(.+\.)?zaakonline\.nl$|localhost'
+  trustedHosts: '^localhost$|^127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$'
   pullPolicy: Always
   # You will need these proxies on kubernetes
   trustedProxies:
