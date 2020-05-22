@@ -9,23 +9,22 @@ settings:
   title: Locatie Catalogus
   version: V.0.1
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
-  repro: 'https://github.com/ConductionNL/locatiecatalogus'
-  subdomain: pc  
+  repro: https://github.com/ConductionNL/locatiecatalogus
+  demo: lc.zaakonline.nl
+  container: https://hub.docker.com/repository/docker/conduction/lc-php
+  subdomain: lc  
   domains:
     - conduction.nl
     - zaakonline.nl
-    - common-ground.dev
-    - trouwplanner.online
     - huwelijksplanner.online
-    - larping.eu
-  domainsJson: ["conduction.nl","zaakonline.nl","common-ground.dev","trouwplanner.online","huwelijksplanner.online","larping.eu"]
+    - common-ground.dev
+  domainsJson: ["conduction.nl","zaakonline.nl","huwelijksplanner.online","common-ground.dev"]
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
   state: Noord-Holland
   locality: Amsterdam
   unit: Common-Ground  
-  demo: lc.zaakonline.nl
   env: dev
   debug: 1
   replicaCount: 1
