@@ -203,6 +203,13 @@ class Accommodation
     private $place;
 
     /**
+     * @Groups({"read","write"})
+     * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProp", mappedBy="accommodation")
+     * @MaxDepth(1)
+     */
+    private $accommodationProps;
+
+    /**
      * @var Datetime $dateCreated The moment this resource was created
      *
      * @Groups({"read"})
@@ -220,18 +227,10 @@ class Accommodation
      */
     private $dateModified;
 
-    /**
-     * @var ArrayCollection|Resource[] Resources available in this accommodation
-     *
-     * @Groups({"read","write"})
-     * @MaxDepth(1)
-     * @ORM\ManyToMany(targetEntity="App\Entity\Resource", inversedBy="accommodations")
-     */
-    private $resources;
 
     public function __construct()
     {
-        $this->resources = new ArrayCollection();
+        $this->accommodationProps = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -407,26 +406,35 @@ class Accommodation
     	return $this;
     }
 
-    public function getResources(): ?array
+    /**
+     * @return Collection|AccommodationProp[]
+     */
+    public function getAccommodationProps(): Collection
     {
-        return $this->resources;
+        return $this->accommodationProps;
     }
 
-    public function addResource(Resource $resource): self
+    public function addAccommodationProp(AccomodationProp $accommodationProp): self
     {
-        if (!$this->resources->contains($resource)) {
-            $this->resources[] = $resource;
+        if (!$this->accommodationProps->contains($accommodationProp)) {
+            $this->accommodationProps[] = $accommodationProp;
+            $accommodationProp->setProperty($this);
         }
 
         return $this;
     }
 
-    public function removeResource(Resource $resource): self
+    public function removeAccommodationProp(AccomodationProp $accommodationProp): self
     {
-        if ($this->resources->contains($resource)) {
-            $this->resources->removeElement($resource);
+        if ($this->accommodationProps->contains($accommodationProp)) {
+            $this->accommodationProps->removeElement($accommodationProp);
+            // set the owning side to null (unless already changed)
+            if ($accommodationProp->setProperty() === $this) {
+                $accommodationProp->setProperty(null);
+            }
         }
 
         return $this;
     }
+
 }

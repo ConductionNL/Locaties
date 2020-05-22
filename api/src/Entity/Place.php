@@ -230,6 +230,13 @@ class Place
     private $accommodations;
 
     /**
+     * @Groups({"read","write"})
+     * @ORM\OneToMany(targetEntity="App\Entity\PlaceProp", mappedBy="place")
+     * @MaxDepth(1)
+     */
+    private $placeProps;
+
+    /**
      * @var Datetime $dateCreated The moment this resource was created
      *
      * @Groups({"read"})
@@ -250,6 +257,7 @@ class Place
     public function __construct()
     {
         $this->accommodations = new ArrayCollection();
+        $this->placeProps = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -426,6 +434,37 @@ class Place
             // set the owning side to null (unless already changed)
             if ($accommodation->getPlace() === $this) {
                 $accommodation->setPlace(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlaceProp[]
+     */
+    public function getPlaceProps(): Collection
+    {
+        return $this->placeProps;
+    }
+
+    public function addPlaceProp(PlaceProp $placeProp): self
+    {
+        if (!$this->placeProps->contains($placeProp)) {
+            $this->placeProps[] = $placeProp;
+            $placeProp->setPlace($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaceProp(PlaceProp $placeProp): self
+    {
+        if ($this->placeProps->contains($placeProp)) {
+            $this->placeProps->removeElement($placeProp);
+            // set the owning side to null (unless already changed)
+            if ($placeProp->setPlace() === $this) {
+                $placeProp->setPlace(null);
             }
         }
 
