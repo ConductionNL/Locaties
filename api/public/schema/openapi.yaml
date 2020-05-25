@@ -7102,6 +7102,11 @@ components:
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource-read'
       required:
         - name
         - accommodationCategory
@@ -7229,6 +7234,11 @@ components:
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+        resources:
+          description: 'Resources available in this accommodation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource:jsonld-read'
       required:
         - name
         - accommodationCategory
