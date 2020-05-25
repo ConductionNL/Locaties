@@ -5482,6 +5482,7 @@ components:
         description:
           description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
+          nullable: true
         accommodationCategory:
           description: 'The category this accomodation falls into'
           type: string
@@ -5510,15 +5511,15 @@ components:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place-read'
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
         resources:
           description: 'Resources available in this accommodation'
           type: array
@@ -5554,6 +5555,7 @@ components:
         description:
           description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
+          nullable: true
         accommodationCategory:
           description: 'The category this accomodation falls into'
           type: string
@@ -5609,6 +5611,7 @@ components:
         description:
           description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
+          nullable: true
         accommodationCategory:
           description: 'The category this accomodation falls into'
           type: string
@@ -5637,15 +5640,15 @@ components:
           description: 'The location this accommodation belongs to'
           $ref: '#/components/schemas/Place:jsonld-read'
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
         resources:
           description: 'Resources available in this accommodation'
           type: array
@@ -5690,6 +5693,7 @@ components:
         description:
           description: 'The description of this accommodation is displayed to end users as additional information'
           type: string
+          nullable: true
         accommodationCategory:
           description: 'The category this accomodation falls into'
           type: string
@@ -6114,24 +6118,31 @@ components:
         description:
           description: 'The description of this place is displayed to end users as additional information'
           type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
+          nullable: true
         url:
           description: 'Website of this Place'
           type: string
+          nullable: true
         telephone:
           description: 'Phone number of this Place'
           type: string
+          nullable: true
         logo:
           description: 'Logo of this Place'
           type: string
+          nullable: true
         photo:
           description: 'Photo of this Place'
           type: string
+          nullable: true
         hasMap:
           description: 'Map of this Place'
           type: string
+          nullable: true
         publicAccess:
           description: 'Answers the question if the place is publicly accessible'
           type: boolean
@@ -6156,15 +6167,15 @@ components:
           items:
             $ref: '#/components/schemas/Accommodation-read'
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - name
         - publicAccess
@@ -6187,24 +6198,31 @@ components:
         description:
           description: 'The description of this place is displayed to end users as additional information'
           type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
+          nullable: true
         url:
           description: 'Website of this Place'
           type: string
+          nullable: true
         telephone:
           description: 'Phone number of this Place'
           type: string
+          nullable: true
         logo:
           description: 'Logo of this Place'
           type: string
+          nullable: true
         photo:
           description: 'Photo of this Place'
           type: string
+          nullable: true
         hasMap:
           description: 'Map of this Place'
           type: string
+          nullable: true
         publicAccess:
           description: 'Answers the question if the place is publicly accessible'
           type: boolean
@@ -6251,24 +6269,31 @@ components:
         description:
           description: 'The description of this place is displayed to end users as additional information'
           type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
+          nullable: true
         url:
           description: 'Website of this Place'
           type: string
+          nullable: true
         telephone:
           description: 'Phone number of this Place'
           type: string
+          nullable: true
         logo:
           description: 'Logo of this Place'
           type: string
+          nullable: true
         photo:
           description: 'Photo of this Place'
           type: string
+          nullable: true
         hasMap:
           description: 'Map of this Place'
           type: string
+          nullable: true
         publicAccess:
           description: 'Answers the question if the place is publicly accessible'
           type: boolean
@@ -6293,15 +6318,15 @@ components:
           items:
             $ref: '#/components/schemas/Accommodation:jsonld-read'
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - name
         - publicAccess
@@ -6333,24 +6358,31 @@ components:
         description:
           description: 'The description of this place is displayed to end users as additional information'
           type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
+          nullable: true
         url:
           description: 'Website of this Place'
           type: string
+          nullable: true
         telephone:
           description: 'Phone number of this Place'
           type: string
+          nullable: true
         logo:
           description: 'Logo of this Place'
           type: string
+          nullable: true
         photo:
           description: 'Photo of this Place'
           type: string
+          nullable: true
         hasMap:
           description: 'Map of this Place'
           type: string
+          nullable: true
         publicAccess:
           description: 'Answers the question if the place is publicly accessible'
           type: boolean
@@ -6388,6 +6420,7 @@ components:
         description:
           description: 'The description of this resource'
           type: string
+          nullable: true
         amount:
           description: 'The amount in which this resource is available'
           type: string
@@ -6412,6 +6445,7 @@ components:
         description:
           description: 'The description of this resource'
           type: string
+          nullable: true
         amount:
           description: 'The amount in which this resource is available'
           type: string
@@ -6443,6 +6477,7 @@ components:
         description:
           description: 'The description of this resource'
           type: string
+          nullable: true
         amount:
           description: 'The amount in which this resource is available'
           type: string
@@ -6476,6 +6511,7 @@ components:
         description:
           description: 'The description of this resource'
           type: string
+          nullable: true
         amount:
           description: 'The amount in which this resource is available'
           type: string
@@ -6620,6 +6656,255 @@ definitions:
       - floorLevel
       - maximumAttendeeCapacity
       - product
+  Place-read:
+    properties:
+      id:
+        description: ''
+        type: \UuidInterface
+      name:
+        description: 'The name of this place is displayed as a title to end users'
+        type: string
+        example: 'My Place'
+        maxLength: 255
+      description:
+        description: 'The description of this place is displayed to end users as additional information'
+        type: string
+        example: 'This is the best place ever'
+        maxLength: 2550
+      bagId:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
+        example: '0363200000218908'
+        maxLength: 16
+      url:
+        description: 'Website of this Place'
+        type: string
+        example: 'https://location.com'
+        maxLength: 255
+      telephone:
+        description: 'Phone number of this Place'
+        type: string
+        example: '+31 (0)26 355 7772'
+        maxLength: 255
+      logo:
+        description: 'Logo of this Place'
+        type: string
+        example: 'https://location.com/logo.svg'
+        maxLength: 255
+      photo:
+        description: 'Photo of this Place'
+        type: string
+        example: 'https://location.com/photo.jpg'
+        maxLength: 255
+      hasMap:
+        description: 'Map of this Place'
+        type: string
+        example: 'https://location.com/map.pdf'
+        maxLength: 255
+      publicAccess:
+        description: 'Answers the question if the place is publicly accessible'
+        type: bool
+        example: 'true'
+      smokingAllowed:
+        description: 'Answers the question if smoking is allowed in this place'
+        type: bool
+        example: 'true'
+      openingTime:
+        description: 'the opening time of the location'
+        type: string
+        example: '2020-05-25 14:54:04'
+        format: date-time
+      closingTime:
+        description: 'the closing time of the location'
+        type: string
+        example: '2020-05-25 14:54:04'
+        format: date-time
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+      accommodations:
+        description: 'The accommodations in this location'
+        type: '\Accommodation[]|\ArrayCollection'
+    required:
+      - name
+      - publicAccess
+      - smokingAllowed
+      - openingTime
+      - closingTime
+  Place-write:
+    properties:
+      name:
+        description: 'The name of this place is displayed as a title to end users'
+        type: string
+        example: 'My Place'
+        maxLength: 255
+      description:
+        description: 'The description of this place is displayed to end users as additional information'
+        type: string
+        example: 'This is the best place ever'
+        maxLength: 2550
+      bagId:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
+        example: '0363200000218908'
+        maxLength: 16
+      url:
+        description: 'Website of this Place'
+        type: string
+        example: 'https://location.com'
+        maxLength: 255
+      telephone:
+        description: 'Phone number of this Place'
+        type: string
+        example: '+31 (0)26 355 7772'
+        maxLength: 255
+      logo:
+        description: 'Logo of this Place'
+        type: string
+        example: 'https://location.com/logo.svg'
+        maxLength: 255
+      photo:
+        description: 'Photo of this Place'
+        type: string
+        example: 'https://location.com/photo.jpg'
+        maxLength: 255
+      hasMap:
+        description: 'Map of this Place'
+        type: string
+        example: 'https://location.com/map.pdf'
+        maxLength: 255
+      publicAccess:
+        description: 'Answers the question if the place is publicly accessible'
+        type: bool
+        example: 'true'
+      smokingAllowed:
+        description: 'Answers the question if smoking is allowed in this place'
+        type: bool
+        example: 'true'
+      openingTime:
+        description: 'the opening time of the location'
+        type: string
+        example: '2020-05-25 14:54:04'
+        format: date-time
+      closingTime:
+        description: 'the closing time of the location'
+        type: string
+        example: '2020-05-25 14:54:04'
+        format: date-time
+      accommodations:
+        description: 'The accommodations in this location'
+        type: '\Accommodation[]|\ArrayCollection'
+    required:
+      - name
+      - publicAccess
+      - smokingAllowed
+      - openingTime
+      - closingTime
+  Resource-read:
+    properties:
+      id:
+        description: ''
+        type: \UuidInterface
+      name:
+        description: 'The name of this resource'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      description:
+        description: 'The description of this resource'
+        type: string
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      amount:
+        description: 'The amount in which this resource is available'
+        type: int
+        example: 'My Accommodation'
+        maxLength: 255
+      accommodations:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|\Accommodation[]'
+    required:
+      - name
+      - amount
+  Resource-write:
+    properties:
+      name:
+        description: 'The name of this resource'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      description:
+        description: 'The description of this resource'
+        type: string
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      amount:
+        description: 'The amount in which this resource is available'
+        type: int
+        example: 'My Accommodation'
+        maxLength: 255
+      accommodations:
+        description: 'Resources available in this accommodation'
+        type: '\ArrayCollection|\Accommodation[]'
+    required:
+      - name
+      - amount
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 14:54:05'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 14:54:05'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
   AuditTrail-read:
     properties:
       id:
@@ -6724,12 +7009,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-29 13:57:39'
+        example: '2020-05-25 14:54:05'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-29 13:57:39'
+        example: '2020-05-25 14:54:05'
     required: []
   AuditTrail-write:
     properties:
@@ -6739,255 +7024,6 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-04-29 13:57:39'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-04-29 13:57:39'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
-  Place-read:
-    properties:
-      id:
-        description: ''
-        type: \UuidInterface
-      name:
-        description: 'The name of this place is displayed as a title to end users'
-        type: string
-        example: 'My Place'
-        maxLength: 255
-      description:
-        description: 'The description of this place is displayed to end users as additional information'
-        type: string
-        example: 'This is the best place ever'
-        maxLength: 2550
-      bagId:
-        description: 'Bagnummeraanduiding of this Address'
-        type: string
-        example: '0363200000218908'
-        maxLength: 16
-      url:
-        description: 'Website of this Place'
-        type: string
-        example: 'https://location.com'
-        maxLength: 255
-      telephone:
-        description: 'Phone number of this Place'
-        type: string
-        example: '+31 (0)26 355 7772'
-        maxLength: 255
-      logo:
-        description: 'Logo of this Place'
-        type: string
-        example: 'https://location.com/logo.svg'
-        maxLength: 255
-      photo:
-        description: 'Photo of this Place'
-        type: string
-        example: 'https://location.com/photo.jpg'
-        maxLength: 255
-      hasMap:
-        description: 'Map of this Place'
-        type: string
-        example: 'https://location.com/map.pdf'
-        maxLength: 255
-      publicAccess:
-        description: 'Answers the question if the place is publicly accessible'
-        type: bool
-        example: 'true'
-      smokingAllowed:
-        description: 'Answers the question if smoking is allowed in this place'
-        type: bool
-        example: 'true'
-      openingTime:
-        description: 'the opening time of the location'
-        type: string
-        example: '2020-04-29 13:57:39'
-        format: date-time
-      closingTime:
-        description: 'the closing time of the location'
-        type: string
-        example: '2020-04-29 13:57:39'
-        format: date-time
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      accommodations:
-        description: 'The accommodations in this location'
-        type: '\Accommodation[]|\ArrayCollection'
-    required:
-      - name
-      - publicAccess
-      - smokingAllowed
-      - openingTime
-      - closingTime
-  Place-write:
-    properties:
-      name:
-        description: 'The name of this place is displayed as a title to end users'
-        type: string
-        example: 'My Place'
-        maxLength: 255
-      description:
-        description: 'The description of this place is displayed to end users as additional information'
-        type: string
-        example: 'This is the best place ever'
-        maxLength: 2550
-      bagId:
-        description: 'Bagnummeraanduiding of this Address'
-        type: string
-        example: '0363200000218908'
-        maxLength: 16
-      url:
-        description: 'Website of this Place'
-        type: string
-        example: 'https://location.com'
-        maxLength: 255
-      telephone:
-        description: 'Phone number of this Place'
-        type: string
-        example: '+31 (0)26 355 7772'
-        maxLength: 255
-      logo:
-        description: 'Logo of this Place'
-        type: string
-        example: 'https://location.com/logo.svg'
-        maxLength: 255
-      photo:
-        description: 'Photo of this Place'
-        type: string
-        example: 'https://location.com/photo.jpg'
-        maxLength: 255
-      hasMap:
-        description: 'Map of this Place'
-        type: string
-        example: 'https://location.com/map.pdf'
-        maxLength: 255
-      publicAccess:
-        description: 'Answers the question if the place is publicly accessible'
-        type: bool
-        example: 'true'
-      smokingAllowed:
-        description: 'Answers the question if smoking is allowed in this place'
-        type: bool
-        example: 'true'
-      openingTime:
-        description: 'the opening time of the location'
-        type: string
-        example: '2020-04-29 13:57:39'
-        format: date-time
-      closingTime:
-        description: 'the closing time of the location'
-        type: string
-        example: '2020-04-29 13:57:39'
-        format: date-time
-      accommodations:
-        description: 'The accommodations in this location'
-        type: '\Accommodation[]|\ArrayCollection'
-    required:
-      - name
-      - publicAccess
-      - smokingAllowed
-      - openingTime
-      - closingTime
-  Resource-read:
-    properties:
-      id:
-        description: ''
-        type: \UuidInterface
-      name:
-        description: 'The name of this resource'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      description:
-        description: 'The description of this resource'
-        type: string
-        example: 'This is the best accommodation ever'
-        maxLength: 2550
-      amount:
-        description: 'The amount in which this resource is available'
-        type: int
-        example: 'My Accommodation'
-        maxLength: 255
-      accommodations:
-        description: 'Resources available in this accommodation'
-        type: '\ArrayCollection|\Accommodation[]'
-    required:
-      - name
-      - amount
-  Resource-write:
-    properties:
-      name:
-        description: 'The name of this resource'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      description:
-        description: 'The description of this resource'
-        type: string
-        example: 'This is the best accommodation ever'
-        maxLength: 2550
-      amount:
-        description: 'The amount in which this resource is available'
-        type: int
-        example: 'My Accommodation'
-        maxLength: 255
-      accommodations:
-        description: 'Resources available in this accommodation'
-        type: '\ArrayCollection|\Accommodation[]'
-    required:
-      - name
-      - amount
 tags:
   -
     name: Accommodation
@@ -6995,18 +7031,6 @@ tags:
       A room or other accommodation that can facilitate people.
       
       
-  -
-    name: AuditTrail
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
-  -
-    name: ChangeLog
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
     name: Place
     description: |
@@ -7019,21 +7043,33 @@ tags:
       
       
       
+  -
+    name: ChangeLog
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: AuditTrail
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the Resource resource'
-      write: 'write right to the Resource resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the Resource resource'
-      write: 'write right to the Resource resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -
