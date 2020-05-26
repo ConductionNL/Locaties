@@ -458,7 +458,7 @@ class Place
         return $this;
     }
 
-    public function removePlaceProp(PlaceProperty $placeProperty): self
+    public function removePlaceProperty(PlaceProperty $placeProperty): self
     {
         if ($this->placeProperties->contains($placeProperty)) {
             $this->placeProperties->removeElement($placeProperty);

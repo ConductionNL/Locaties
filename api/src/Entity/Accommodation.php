@@ -414,7 +414,7 @@ class Accommodation
         return $this->accommodationProperties;
     }
 
-    public function addAccommodationProp(AccommodationProperty $accommodationProperty): self
+    public function addAccommodationProperty(AccommodationProperty $accommodationProperty): self
     {
         if (!$this->accommodationProperties->contains($accommodationProperty)) {
             $this->accommodationProperties[] = $accommodationProperty;
@@ -424,7 +424,7 @@ class Accommodation
         return $this;
     }
 
-    public function removeAccommodationProp(AccommodationProperty $accommodationProperty): self
+    public function removeAccommodationProperty(AccommodationProperty $accommodationProperty): self
     {
         if ($this->accommodationProperties->contains($accommodationProperty)) {
             $this->accommodationProperties->removeElement($accommodationProperty);

@@ -99,7 +99,7 @@ class PlaceProperty
 
     /**
      * @Groups({"read"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProps")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProperties")
      * @MaxDepth(1)
      */
     private $property;
