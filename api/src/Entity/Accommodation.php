@@ -429,7 +429,7 @@ class Accommodation
         if ($this->accommodationProperties->contains($accommodationProperty)) {
             $this->accommodationProperties->removeElement($accommodationProperty);
             // set the owning side to null (unless already changed)
-            if ($accommodationProperty->setAccommodation() === $this) {
+            if ($accommodationProperty->getAccommodation() === $this) {
                 $accommodationProperty->setAccommodation(null);
             }
         }

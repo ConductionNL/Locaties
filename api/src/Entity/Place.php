@@ -463,7 +463,7 @@ class Place
         if ($this->placeProperties->contains($placeProperty)) {
             $this->placeProperties->removeElement($placeProperty);
             // set the owning side to null (unless already changed)
-            if ($placeProperty->setPlace() === $this) {
+            if ($placeProperty->getPlace() === $this) {
                 $placeProperty->setPlace(null);
             }
         }
