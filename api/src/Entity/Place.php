@@ -48,7 +48,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
@@ -434,37 +434,6 @@ class Place
             // set the owning side to null (unless already changed)
             if ($accommodation->getPlace() === $this) {
                 $accommodation->setPlace(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|PlaceProperty[]
-     */
-    public function getPlaceProperties(): Collection
-    {
-        return $this->placeProperties;
-    }
-
-    public function addPlaceProperty(PlaceProperty $placeProperty): self
-    {
-        if (!$this->placeProperties->contains($placeProperty)) {
-            $this->placeProperties[] = $placeProperty;
-            $placeProperty->setPlace($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlaceProperty(PlaceProperty $placeProperty): self
-    {
-        if ($this->placeProperties->contains($placeProperty)) {
-            $this->placeProperties->removeElement($placeProperty);
-            // set the owning side to null (unless already changed)
-            if ($placeProperty->getPlace() === $this) {
-                $placeProperty->setPlace(null);
             }
         }
 
