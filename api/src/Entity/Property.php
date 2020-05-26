@@ -241,7 +241,7 @@ class Property
         if ($this->placeProperties->contains($placeProperty)) {
             $this->placeProperties->removeElement($placeProperty);
             // set the owning side to null (unless already changed)
-            if ($placeProperty->setProperty() === $this) {
+            if ($placeProperty->getProperty() === $this) {
                 $placeProperty->setProperty(null);
             }
         }
@@ -272,7 +272,7 @@ class Property
         if ($this->accommodationProperties->contains($accommodationProperty)) {
             $this->accommodationProperties->removeElement($accommodationProperty);
             // set the owning side to null (unless already changed)
-            if ($accommodationProperty->setProperty() === $this) {
+            if ($accommodationProperty->getProperty() === $this) {
                 $accommodationProperty->setProperty(null);
             }
         }
