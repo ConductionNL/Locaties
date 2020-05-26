@@ -8,6 +8,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
@@ -46,7 +48,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AccommodationRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -168,7 +170,7 @@ class Accommodation
      * @var int The maximum number of attendees the accommodation can facilitate
      * @example 10
      *
-     * 
+     *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer")
@@ -191,17 +193,6 @@ class Accommodation
     private $product;
 
     /**
-     * @var array|string[] Resources available in this accommodation
-     * @example My Accommodation
-     *
-     * @Gedmo\Versioned
-     * @Groups({"read","write"})
-     * @ORM\Column(type="array", length=255)
-     * @Assert\NotNull
-     */
-    private $resources = [];
-
-    /**
      * @var Place The location this accommodation belongs to
      *
      * @Groups({"read","write"})
@@ -210,7 +201,14 @@ class Accommodation
      * @ORM\JoinColumn(nullable=false)
      */
     private $place;
-    
+
+    /**
+     * @Groups({"read","write"})
+     * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProperty", mappedBy="accommodation")
+     * @MaxDepth(1)
+     */
+    private $accommodationProperties;
+
     /**
      * @var Datetime $dateCreated The moment this resource was created
      *
@@ -219,15 +217,21 @@ class Accommodation
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
-    
+
     /**
      * @var Datetime $dateModified  The moment this resource last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
+
+
+    public function __construct()
+    {
+        $this->accommodationProperties = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -330,18 +334,6 @@ class Accommodation
         return $this;
     }
 
-    public function getResources(): ?array
-    {
-        return $this->resources;
-    }
-
-    public function setResources(?array $resources): self
-    {
-        $this->resources = $resources;
-
-        return $this;
-    }
-
     public function getNumberOfBathroomsTotal(): ?int
     {
         return $this->numberOfBathroomsTotal;
@@ -389,28 +381,60 @@ class Accommodation
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateCreated;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
+
+    /**
+     * @return Collection|AccommodationProperty[]
+     */
+    public function getAccommodationProperties(): Collection
+    {
+        return $this->accommodationProperties;
+    }
+
+    public function addAccommodationProperty(AccommodationProperty $accommodationProperty): self
+    {
+        if (!$this->accommodationProperties->contains($accommodationProperty)) {
+            $this->accommodationProperties[] = $accommodationProperty;
+            $accommodationProperty->setAccommodation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccommodationProperty(AccommodationProperty $accommodationProperty): self
+    {
+        if ($this->accommodationProperties->contains($accommodationProperty)) {
+            $this->accommodationProperties->removeElement($accommodationProperty);
+            // set the owning side to null (unless already changed)
+            if ($accommodationProperty->getAccommodation() === $this) {
+                $accommodationProperty->setAccommodation(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
