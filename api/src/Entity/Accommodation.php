@@ -2,21 +2,20 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A room or other accommodation that can facilitate people.
@@ -69,6 +68,7 @@ class Accommodation
 
     /**
      * @var string The name of this accommodation is displayed as a title to end users
+     *
      * @example My Accommodation
      *
      * @Gedmo\Versioned
@@ -83,6 +83,7 @@ class Accommodation
 
     /**
      * @var string The description of this accommodation is displayed to end users as additional information
+     *
      * @example This is the best accommodation ever
      *
      * @Gedmo\Versioned
@@ -96,6 +97,7 @@ class Accommodation
 
     /**
      * @var string The category this accomodation falls into
+     *
      * @example Restaurant
      *
      * @Gedmo\Versioned
@@ -110,6 +112,7 @@ class Accommodation
 
     /**
      * @var string The floor surface area of the accommodation
+     *
      * @example 25 m^2
      *
      * @Gedmo\Versioned
@@ -124,6 +127,7 @@ class Accommodation
 
     /**
      * @var bool Answers the question if pets are allowed or not
+     *
      * @example true
      *
      * @Gedmo\Versioned
@@ -135,6 +139,7 @@ class Accommodation
 
     /**
      * @var bool Answers the question if the accomodation is wheelchair accessible
+     *
      * @example true
      *
      * @Gedmo\Versioned
@@ -146,6 +151,7 @@ class Accommodation
 
     /**
      * @var int The number of available toilets at the accommodation
+     *
      * @example 10
      *
      * @Gedmo\Versioned
@@ -157,6 +163,7 @@ class Accommodation
 
     /**
      * @var int The floor level the accommodation is situated on
+     *
      * @example 10
      *
      * @Gedmo\Versioned
@@ -168,6 +175,7 @@ class Accommodation
 
     /**
      * @var int The maximum number of attendees the accommodation can facilitate
+     *
      * @example 10
      *
      *
@@ -180,6 +188,7 @@ class Accommodation
 
     /**
      * @var string The product this accommodation is related to
+     *
      * @example My Accommodation
      *
      * @Gedmo\Versioned
@@ -210,7 +219,7 @@ class Accommodation
     private $accommodationProperties;
 
     /**
-     * @var Datetime $dateCreated The moment this resource was created
+     * @var Datetime The moment this resource was created
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="create")
@@ -219,14 +228,13 @@ class Accommodation
     private $dateCreated;
 
     /**
-     * @var Datetime $dateModified  The moment this resource last Modified
+     * @var Datetime The moment this resource last Modified
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
-
 
     public function __construct()
     {
@@ -384,26 +392,26 @@ class Accommodation
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-    	return $this->dateCreated;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
-    	$this->dateCreated= $dateCreated;
+        $this->dateCreated = $dateCreated;
 
-    	return $this;
+        return $this;
     }
 
     public function getDateModified(): ?\DateTimeInterface
     {
-    	return $this->dateModified;
+        return $this->dateModified;
     }
 
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
-    	$this->dateModified = $dateModified;
+        $this->dateModified = $dateModified;
 
-    	return $this;
+        return $this;
     }
 
     /**
@@ -436,5 +444,4 @@ class Accommodation
 
         return $this;
     }
-
 }
