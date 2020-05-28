@@ -42,12 +42,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AccommodationPropertyRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * @Table(name="accommodation_properties",
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
+ *
+ * @ORM\Table(name="accommodation_properties",
  *    uniqueConstraints={
- *        @UniqueConstraint(name="accommodation_property",
+ *        @ORM\UniqueConstraint(name="accommodation_property",
  *            columns={"accommodation", "property"})
- *    }
+ *    })
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -97,6 +98,7 @@ class AccommodationProperty
     /**
      * @Groups({"read"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProperties")
+     * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
      */
     private $property;
@@ -104,6 +106,7 @@ class AccommodationProperty
     /**
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Accommodation", inversedBy="accommodationProperties")
+     * @ORM\JoinColumn(name="accommodation")
      * @MaxDepth(1)
      */
     private $accommodation;

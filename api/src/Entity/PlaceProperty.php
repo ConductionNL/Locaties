@@ -42,13 +42,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PlacePropertyRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
- * @Table(name="place_properties",
+ * @ORM\Table(name="place_properties",
  *    uniqueConstraints={
- *        @UniqueConstraint(name="place_property",
+ *        @ORM\UniqueConstraint(name="place_property",
  *            columns={"place", "property"})
- *    }
+ *    })
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -97,6 +97,7 @@ class PlaceProperty
     /**
      * @Groups({"read"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProperties")
+     * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
      */
     private $property;
@@ -104,6 +105,7 @@ class PlaceProperty
     /**
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="placeProperties")
+     * @ORM\JoinColumn(name="place")
      * @MaxDepth(1)
      */
     private $place;

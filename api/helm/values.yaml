@@ -14,14 +14,14 @@ settings:
   repro: https://github.com/ConductionNL/locatiecatalogus
   demo: lc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/lc-php
-  subdomain: lc  
   domain: conduction.nl
+  subdomain: lc
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
   state: Noord-Holland
   locality: Amsterdam
-  unit: Common-Ground  
+  unit: Common-Ground
   env: dev
   debug: 1
   cache: 1
