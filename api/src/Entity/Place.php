@@ -2,22 +2,21 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A building or terrain with an address that can host accommodations.
@@ -48,7 +47,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PlaceRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
@@ -99,6 +98,7 @@ class Place
 
     /**
      * @var string Bagnummeraanduiding of this Address
+     *
      * @example 0363200000218908
      *
      * @Gedmo\Versioned
@@ -112,6 +112,7 @@ class Place
 
     /**
      * @var string Website of this Place
+     *
      * @example https://location.com
      *
      * @Gedmo\Versioned
@@ -125,6 +126,7 @@ class Place
 
     /**
      * @var string Phone number of this Place
+     *
      * @example +31 (0)26 355 7772
      *
      * @Gedmo\Versioned
@@ -138,6 +140,7 @@ class Place
 
     /**
      * @var string Logo of this Place
+     *
      * @example https://location.com/logo.svg
      *
      * @Gedmo\Versioned
@@ -151,6 +154,7 @@ class Place
 
     /**
      * @var string Photo of this Place
+     *
      * @example https://location.com/photo.jpg
      *
      * @Gedmo\Versioned
@@ -164,6 +168,7 @@ class Place
 
     /**
      * @var string Map of this Place
+     *
      * @example https://location.com/map.pdf
      *
      * @Gedmo\Versioned
@@ -177,6 +182,7 @@ class Place
 
     /**
      * @var bool Answers the question if the place is publicly accessible
+     *
      * @example true
      *
      * @Gedmo\Versioned
@@ -188,6 +194,7 @@ class Place
 
     /**
      * @var bool Answers the question if smoking is allowed in this place
+     *
      * @example true
      *
      * @Gedmo\Versioned
@@ -199,6 +206,7 @@ class Place
 
     /**
      * @var DateTime the opening time of the location
+     *
      * @example 08:00
      *
      * @Gedmo\Versioned
@@ -211,6 +219,7 @@ class Place
 
     /**
      * @var DateTime the closing time of the location
+     *
      * @example 18:00
      *
      * @Gedmo\Versioned
@@ -237,7 +246,7 @@ class Place
     private $placeProperties;
 
     /**
-     * @var Datetime $dateCreated The moment this resource was created
+     * @var Datetime The moment this resource was created
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="create")
@@ -246,7 +255,7 @@ class Place
     private $dateCreated;
 
     /**
-     * @var Datetime $dateModified  The moment this resource last Modified
+     * @var Datetime The moment this resource last Modified
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="update")
@@ -440,58 +449,27 @@ class Place
         return $this;
     }
 
-    /**
-     * @return Collection|PlaceProperty[]
-     */
-    public function getPlaceProperties(): Collection
-    {
-        return $this->placeProperties;
-    }
-
-    public function addPlaceProperty(PlaceProperty $placeProperty): self
-    {
-        if (!$this->placeProperties->contains($placeProperty)) {
-            $this->placeProperties[] = $placeProperty;
-            $placeProperty->setPlace($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlaceProperty(PlaceProperty $placeProperty): self
-    {
-        if ($this->placeProperties->contains($placeProperty)) {
-            $this->placeProperties->removeElement($placeProperty);
-            // set the owning side to null (unless already changed)
-            if ($placeProperty->getPlace() === $this) {
-                $placeProperty->setPlace(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getDateCreated(): ?\DateTimeInterface
     {
-    	return $this->dateCreated;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
-    	$this->dateCreated= $dateCreated;
+        $this->dateCreated = $dateCreated;
 
-    	return $this;
+        return $this;
     }
 
     public function getDateModified(): ?\DateTimeInterface
     {
-    	return $this->dateModified;
+        return $this->dateModified;
     }
 
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
-    	$this->dateModified = $dateModified;
+        $this->dateModified = $dateModified;
 
-    	return $this;
+        return $this;
     }
 }
