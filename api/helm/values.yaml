@@ -14,7 +14,7 @@ settings:
   repro: https://github.com/ConductionNL/locatiecatalogus
   demo: lc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/lc-php
-  domain: conduction.nl
+  domain: dev
   subdomain: lc
   organisationName: Conduction
   email: info@conduction.nl
