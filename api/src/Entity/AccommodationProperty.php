@@ -96,7 +96,7 @@ class AccommodationProperty
     private $key;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProperties")
      * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
@@ -154,6 +154,13 @@ class AccommodationProperty
     public function getProperty(): ?property
     {
         return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
+
+        return $this;
     }
 
     public function getAccommodation(): ?accommodation
