@@ -154,6 +154,7 @@ class PlaceProperty
     {
         return $this->property;
     }
+
     public function setProperty(?Property $property): self
     {
         $this->property = $property;
