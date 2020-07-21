@@ -95,7 +95,7 @@ class PlaceProperty
     private $key;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProperties")
      * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
@@ -150,9 +150,16 @@ class PlaceProperty
         return $this;
     }
 
-    public function getProperty(): ?property
+    public function getProperty(): ?Property
     {
         return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
+
+        return $this;
     }
 
     public function getPlace(): ?place

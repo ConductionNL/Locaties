@@ -7382,7 +7382,6 @@ components:
           description: 'accommodationProp key'
           type: string
         property:
-          readOnly: true
           nullable: true
           anyOf:
             -
@@ -7413,6 +7412,11 @@ components:
         value:
           description: 'accommodationProp value'
           type: string
+        property:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Property-write'
         accommodation:
           nullable: true
           anyOf:
@@ -7446,7 +7450,6 @@ components:
           description: 'accommodationProp key'
           type: string
         property:
-          readOnly: true
           nullable: true
           anyOf:
             -
@@ -7486,6 +7489,11 @@ components:
         value:
           description: 'accommodationProp value'
           type: string
+        property:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Property:jsonld-write'
         accommodation:
           nullable: true
           anyOf:
@@ -8190,7 +8198,6 @@ components:
           description: 'placeProp key'
           type: string
         property:
-          readOnly: true
           nullable: true
           anyOf:
             -
@@ -8221,6 +8228,11 @@ components:
         value:
           description: 'placeProp value'
           type: string
+        property:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Property-write'
         place:
           nullable: true
           anyOf:
@@ -8254,7 +8266,6 @@ components:
           description: 'placeProp key'
           type: string
         property:
-          readOnly: true
           nullable: true
           anyOf:
             -
@@ -8294,6 +8305,11 @@ components:
         value:
           description: 'placeProp value'
           type: string
+        property:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Property:jsonld-write'
         place:
           nullable: true
           anyOf:
@@ -8583,6 +8599,39 @@ definitions:
       - floorLevel
       - maximumAttendeeCapacity
       - product
+  AccommodationProperty-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      value:
+        description: 'accommodationProp value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+      property: []
+      accommodation: []
+    required:
+      - value
+  AccommodationProperty-write:
+    properties:
+      value:
+        description: 'accommodationProp value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      property: []
+      accommodation: []
+    required:
+      - value
   Place-read:
     properties:
       id:
@@ -8639,12 +8688,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -8715,12 +8764,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
@@ -8732,7 +8781,7 @@ definitions:
       - smokingAllowed
       - openingTime
       - closingTime
-  AccommodationProperty-read:
+  PlaceProperty-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
@@ -8740,9 +8789,9 @@ definitions:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       value:
-        description: 'accommodationProp value'
+        description: 'placeProp value'
         type: string
-        example: 'accommodationProp value'
+        example: 'placeProp value'
         maxLength: 255
       dateCreated:
         description: 'The moment this resource was created'
@@ -8751,17 +8800,18 @@ definitions:
         description: 'The moment this resource last Modified'
         type: \Datetime
       property: []
-      accommodation: []
+      place: []
     required:
       - value
-  AccommodationProperty-write:
+  PlaceProperty-write:
     properties:
       value:
-        description: 'accommodationProp value'
+        description: 'placeProp value'
         type: string
-        example: 'accommodationProp value'
+        example: 'placeProp value'
         maxLength: 255
-      accommodation: []
+      property: []
+      place: []
     required:
       - value
   Property-read:
@@ -8819,91 +8869,6 @@ definitions:
     required:
       - name
       - key
-  PlaceProperty-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      value:
-        description: 'placeProp value'
-        type: string
-        example: 'placeProp value'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      property: []
-      place: []
-    required:
-      - value
-  PlaceProperty-write:
-    properties:
-      value:
-        description: 'placeProp value'
-        type: string
-        example: 'placeProp value'
-        maxLength: 255
-      place: []
-    required:
-      - value
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-06-18 10:32:58'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-06-18 10:32:58'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   AuditTrail-read:
     properties:
       id:
@@ -9008,12 +8973,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-18 10:32:58'
+        example: '2020-07-20 15:00:39'
     required: []
   AuditTrail-write:
     properties:
@@ -9021,6 +8986,59 @@ definitions:
         description: 'A note conserning this log lin'
         type: string
         example: 'This log line looks suspicius'
+        maxLength: 2555
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-07-20 15:00:39'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-07-20 15:00:39'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
         maxLength: 2555
     required: []
 tags:
@@ -9031,13 +9049,19 @@ tags:
       
       
   -
+    name: AccommodationProperty
+    description: |
+      
+      
+      
+  -
     name: Place
     description: |
       A building or terrain with an address that can host accommodations.
       
       
   -
-    name: AccommodationProperty
+    name: PlaceProperty
     description: |
       
       
@@ -9049,19 +9073,13 @@ tags:
       
       
   -
-    name: PlaceProperty
-    description: |
-      
-      
-      
-  -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
@@ -9072,15 +9090,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
 host: irc.zaakonline.nl
 servers:
   -
