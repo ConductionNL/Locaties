@@ -43,6 +43,7 @@ class ZuiddrechtFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime ->setTime(8, 00);
         $place->setOpeningTime($openingTime);
@@ -95,6 +96,7 @@ class ZuiddrechtFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime ->setTime(16, 00);
         $place->setOpeningTime($openingTime);
@@ -147,6 +149,7 @@ class ZuiddrechtFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime ->setTime(11, 00);
         $place->setOpeningTime($openingTime);
@@ -199,6 +202,7 @@ class ZuiddrechtFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime ->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -240,6 +244,7 @@ class ZuiddrechtFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime ->setTime(00, 00);
         $place->setOpeningTime($openingTime);
