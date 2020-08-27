@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -95,6 +96,18 @@ class Place
      * )
      */
     private $description;
+
+    /**
+     * @var string The organization that ownes this place
+     *
+     * @example https://example.org/organizations/1
+     *
+     * @Groups({"read","write"})
+     * @Assert\Url
+     * @Assert\NotNull
+     * @ORM\Column(type="string", length=255)
+     */
+    private $organization;
 
     /**
      * @var string Bagnummeraanduiding of this Address
@@ -211,7 +224,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="time")
      * @Assert\NotNull
      * @Assert\DateTime
      */
@@ -224,7 +237,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="time")
      * @Assert\NotNull
      * @Assert\DateTime
      */
@@ -269,9 +282,16 @@ class Place
         $this->placeProperties = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getId(): Uuid
     {
         return $this->id;
+    }
+
+    public function setId(Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -294,6 +314,18 @@ class Place
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getOrganization(): ?string
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(string $organization): self
+    {
+        $this->organization = $organization;
 
         return $this;
     }
