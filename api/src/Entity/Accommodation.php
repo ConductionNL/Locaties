@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -102,11 +103,10 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max = 255
      * )
-     * @Assert\NotNull
      */
     private $accommodationCategory;
 
@@ -117,11 +117,10 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max=255
      * )
-     * @Assert\NotNull
      */
     private $floorSize;
 
@@ -132,8 +131,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="boolean")
-     * @Assert\NotNull
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $petsAllowed;
 
@@ -144,8 +142,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="boolean")
-     * @Assert\NotNull
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $wheelchairAccessible;
 
@@ -156,8 +153,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="integer")
-     * @Assert\NotNull
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $numberOfBathroomsTotal;
 
@@ -168,8 +164,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="integer")
-     * @Assert\NotNull
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $floorLevel;
 
@@ -181,8 +176,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="integer")
-     * @Assert\NotNull
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $maximumAttendeeCapacity;
 
@@ -193,8 +187,7 @@ class Accommodation
      *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max = 255
      * )
@@ -241,9 +234,16 @@ class Accommodation
         $this->accommodationProperties = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getId(): Uuid
     {
         return $this->id;
+    }
+
+    public function setId(Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string

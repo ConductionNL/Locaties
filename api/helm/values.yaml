@@ -9,12 +9,12 @@ settings:
   title: Locatie Catalogus
   version: V.0.1
   id: 
-  description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
   type: component
   repro: https://github.com/ConductionNL/locatiecatalogus
   demo: lc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/lc-php
-  domain: dev
+  domain: conduction.nl
   subdomain: lc
   organisationName: Conduction
   email: info@conduction.nl

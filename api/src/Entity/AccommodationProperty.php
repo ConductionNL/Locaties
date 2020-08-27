@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -96,7 +97,7 @@ class AccommodationProperty
     private $key;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProperties")
      * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
@@ -129,9 +130,16 @@ class AccommodationProperty
      */
     private $dateModified;
 
-    public function getId()
+    public function getId(): Uuid
     {
         return $this->id;
+    }
+
+    public function setId(Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getKey()
@@ -154,6 +162,13 @@ class AccommodationProperty
     public function getProperty(): ?property
     {
         return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
+
+        return $this;
     }
 
     public function getAccommodation(): ?accommodation

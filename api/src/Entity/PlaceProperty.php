@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -95,7 +96,7 @@ class PlaceProperty
     private $key;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProperties")
      * @ORM\JoinColumn(name="property")
      * @MaxDepth(1)
@@ -128,9 +129,16 @@ class PlaceProperty
      */
     private $dateModified;
 
-    public function getId()
+    public function getId(): Uuid
     {
         return $this->id;
+    }
+
+    public function setId(Uuid $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getKey()
@@ -150,9 +158,16 @@ class PlaceProperty
         return $this;
     }
 
-    public function getProperty(): ?property
+    public function getProperty(): ?Property
     {
         return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
+
+        return $this;
     }
 
     public function getPlace(): ?place
