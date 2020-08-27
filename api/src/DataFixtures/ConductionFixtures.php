@@ -2,17 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Accommodation;
-use App\Entity\AccommodationProperty;
-use App\Entity\Place;
-use App\Entity\PlaceProperty;
-use App\Entity\Property;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Ramsey\Uuid\Uuid;
 
 class ConductionFixtures extends Fixture
 {
