@@ -89,7 +89,7 @@ class ZuiddrechtFixtures extends Fixture
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
         $place->setDescription('Het gezeligste dijkcafe van nederland');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'2106575d-50f3-4f2b-8f0f-a2d6bc188222']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -142,7 +142,7 @@ class ZuiddrechtFixtures extends Fixture
         $place = new Place();
         $place->setName('Restautant Goudlust');
         $place->setDescription('In deze vormalige dijkgraaf woning geniet u van voortreffelijk eten bereid met locale ingredienten');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'a9398c45-7497-4dbd-8dd1-1be4f3384ed7']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -194,8 +194,8 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('dae29298-7068-4c03-8b60-92c4056ed99f');
         $place = new Place();
         $place->setName('Hotel Dijkzicht');
-        $place->setDescription('Gevestigd in een oud-tol huis kijkt dit prachtige hotel uit op de drechtse dijk ');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setDescription('Gevestigd in een oud-tol huis kijkt dit prachtige hotel uit op de drechtse dijk');
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'8812dc58-6bbe-4028-8e36-96f402bf63dd']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
