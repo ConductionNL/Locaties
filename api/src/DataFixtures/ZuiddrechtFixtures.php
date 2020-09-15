@@ -89,7 +89,7 @@ class ZuiddrechtFixtures extends Fixture
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
         $place->setDescription('Het gezeligste dijkcafe van nederland');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'8b3f28c4-4163-47f1-9242-a4050bc26ede']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -142,7 +142,7 @@ class ZuiddrechtFixtures extends Fixture
         $place = new Place();
         $place->setName('Restautant Goudlust');
         $place->setDescription('In deze vormalige dijkgraaf woning geniet u van voortreffelijk eten bereid met locale ingredienten');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'a3c5906a-5cd2-4a51-82a6-5833bfa094e1']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -194,8 +194,8 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('dae29298-7068-4c03-8b60-92c4056ed99f');
         $place = new Place();
         $place->setName('Hotel Dijkzicht');
-        $place->setDescription('Gevestigd in een oud-tol huis kijkt dit prachtige hotel uit op de drechtse dijk ');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setDescription('Gevestigd in een oud-tol huis kijkt dit prachtige hotel uit op de drechtse dijk');
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'f302b75e-a233-4ddf-95b5-f8603f2e80e9']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -237,7 +237,7 @@ class ZuiddrechtFixtures extends Fixture
         $place = new Place();
         $place->setName('Camping de alpen koe');
         $place->setDescription('Camperen bij de boer');
-        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'0d3b7b6d-5ab2-442b-b4ff-472fd4112922']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
         $place->setBagId('0363200000094929');
@@ -276,5 +276,65 @@ class ZuiddrechtFixtures extends Fixture
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
 
         $manager->flush();
+
+        $id = Uuid::fromString('fe5d966c-8999-4df5-9679-a0a8fad6f8c8');
+        $place = new Place();
+        $place->setName('Mc Donalds Zuid-Drecht');
+        $place->setDescription('Mc Donalds Zuid-Drecht');
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'e3137e4f-e44d-4400-adbd-0fa1b4be9d65']));
+        $place->setPublicAccess(true);
+        $place->setSmokingAllowed(false);
+        $openingTime = new DateTime();
+        $openingTime->setTime(00, 00);
+        $place->setOpeningTime($openingTime);
+        $closingTime = new DateTime();
+        $closingTime->setTime(00, 00);
+        $place->setClosingTime($closingTime);
+        $manager->persist($place);
+        $place->setId($id);
+        $manager->persist($place);
+        $manager->flush();
+        $place = $manager->getRepository('App:Place')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('d7aa6399-88b8-4451-9c23-dd15ca1719b5');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Mc Donalds Zuid-Drecht');
+        $accommodation->setDescription('Mc Donalds Zuid-Drecht');
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('75a116e3-0e9b-4ca7-ae3b-190a70d519a7');
+        $place = new Place();
+        $place->setName('Creative Ground');
+        $place->setDescription('Creative Ground');
+        $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
+        $place->setPublicAccess(true);
+        $place->setSmokingAllowed(false);
+        $openingTime = new DateTime();
+        $openingTime->setTime(00, 00);
+        $place->setOpeningTime($openingTime);
+        $closingTime = new DateTime();
+        $closingTime->setTime(00, 00);
+        $place->setClosingTime($closingTime);
+        $manager->persist($place);
+        $place->setId($id);
+        $manager->persist($place);
+        $manager->flush();
+        $place = $manager->getRepository('App:Place')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('d96c8148-16f0-4f0b-9010-e1025b9cb6f1');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Emmalaan 7');
+        $accommodation->setDescription('Emmalaan 7');
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
     }
 }
