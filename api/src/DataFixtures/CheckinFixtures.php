@@ -257,6 +257,7 @@ class CheckinFixtures extends Fixture
         $place->setDescription('Creative Ground');
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
+        $place->setBagId('0363200000094929');
         $place->setSmokingAllowed(false);
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
@@ -280,7 +281,7 @@ class CheckinFixtures extends Fixture
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
-        
+
         $manager->flush();
 
     }
