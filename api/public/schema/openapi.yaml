@@ -1,18 +1,18 @@
 openapi: 3.0.2
 info:
   title: 'Locatie Catalogus'
-  version: V.0.1
+  version: V1.0
   description: |
     API Details
     - Component: Locatie Catalogus
     - Reference: lc
     - Enviroment: dev
-    - Version: V.0.1
+    - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/locatiecatalogus) / [zip](https://github.com/ConductionNL/locatiecatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/lc-php) 
     - Datamodel: [postman](/schema/lc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
+    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
   /accommodation_properties:
@@ -8693,12 +8693,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -8775,12 +8775,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
@@ -8952,12 +8952,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
     required: []
   ChangeLog-write:
     properties:
@@ -9071,12 +9071,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-22 11:51:35'
+        example: '2020-09-17 14:11:17'
     required: []
   AuditTrail-write:
     properties:
@@ -9147,8 +9147,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    name: conduction.nl
-    url: lc.dev.conduction.nl
+    name: zuid-drecht.nl
+    url: lc.dev.zuid-drecht.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
