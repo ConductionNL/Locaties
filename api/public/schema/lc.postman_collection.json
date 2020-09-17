@@ -318,7 +318,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"My Place\",\n    \"publicAccess\": true,\n    \"smokingAllowed\": false,\n    \"openingTime\": \"09:00\",\n    \"closingTime\": \"22:00\",\n    \"description\": \"This is the best place ever\",\n    \"bagId\": \"0363200000218908\",\n    \"url\": \"https://location.com\",\n    \"telephone\": \"+31 (0)26 355 7772\",\n    \"logo\": \"https://location.com/logo.svg\",\n    \"photo\": \"https://location.com/photo.png\",\n    \"hasMap\": \"https://location.com/map.pdf\"\n}",
+							"raw": "{\n    \"name\": \"My Place\",\n    \"publicAccess\": true,\n    \"smokingAllowed\": false,\n    \"openingTime\": \"09:00\",\n    \"closingTime\": \"22:00\",\n    \"description\": \"This is the best place ever\",\n    \"bagId\": \"0363200000218908\",\n    \"url\": \"https://location.com\",\n    \"telephone\": \"+31 (0)26 355 7772\",\n    \"logo\": \"https://location.com/logo.svg\",\n    \"photo\": \"https://location.com/photo.png\",\n    \"hasMap\": \"https://location.com/map.pdf\",\n    \"organization\": \"https://wrc.dev.zuid-drecht.nl/organizations/4d1eded3-fbdf-438f-9536-8747dd8ab591\"\n}",
 							"options": {
 								"raw": {}
 							}
@@ -7191,12 +7191,12 @@
 	],
 	"variable": [
 		{
-			"id": "9b005253-d74a-4c6b-b862-f77ede3ff77a",
+			"id": "d37bdd07-28f7-463a-a3e1-23d743166a5d",
 			"key": "baseUrl",
 			"value": "localhost"
 		},
 		{
-			"id": "3b2333a2-ac83-4eb1-8b29-54a42b1e4f75",
+			"id": "8d30302c-f46f-4369-892d-6f01b93aa4a1",
 			"key": "authorization",
 			"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 		}
