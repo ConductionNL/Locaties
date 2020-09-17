@@ -283,6 +283,5 @@ class CheckinFixtures extends Fixture
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
 
         $manager->flush();
-
     }
 }
