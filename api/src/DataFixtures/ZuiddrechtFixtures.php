@@ -309,8 +309,8 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('75a116e3-0e9b-4ca7-ae3b-190a70d519a7');
         $place = new Place();
-        $place->setName('Creative Ground');
-        $place->setDescription('Creative Ground');
+        $place->setName('Creative Grounds');
+        $place->setDescription('Creative Grounds');
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
