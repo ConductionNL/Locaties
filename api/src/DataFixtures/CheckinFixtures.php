@@ -32,6 +32,8 @@ class CheckinFixtures extends Fixture
             return false;
         }
 
+
+
         $id = Uuid::fromString('8f30215c-d778-480c-ac8c-8492d17c6a15');
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
@@ -221,6 +223,9 @@ class CheckinFixtures extends Fixture
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $manager->flush();
+
         $id = Uuid::fromString('fe5d966c-8999-4df5-9679-a0a8fad6f8c8');
         $place = new Place();
         $place->setName('Mc Donalds Zuid-Drecht');
@@ -253,11 +258,10 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('75a116e3-0e9b-4ca7-ae3b-190a70d519a7');
         $place = new Place();
-        $place->setName('Creative Ground');
-        $place->setDescription('Creative Ground');
+        $place->setName('Creative Grounds');
+        $place->setDescription('Creative Grounds');
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
-        $place->setBagId('0363200000094929');
         $place->setSmokingAllowed(false);
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
@@ -281,7 +285,5 @@ class CheckinFixtures extends Fixture
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
-
-        $manager->flush();
     }
 }
