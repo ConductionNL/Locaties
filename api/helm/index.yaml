@@ -2,15 +2,15 @@ apiVersion: v1
 entries:
   lc:
   - apiVersion: v1
-    appVersion: V.0.1
-    created: "2020-08-22T11:50:47.6799939Z"
-    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
-      beschikbaar.
-    digest: e03dcd92f5dfaee0d8e976724e31726dc570dfa5f56d23b52eaa17cc49666cf6
+    appVersion: V1.0
+    created: "2020-09-21T20:40:52.9552269Z"
+    description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
+      interface beschikbaar.&#039;'
+    digest: 57b5ebc46af9b358e370e85ed889dd378b48adfa586f72b66d84ff1c944740b1
     home: lc.zaakonline.nl
     icon: lc.zaakonline.nl
     name: lc
     urls:
     - lc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-22T11:50:47.6757865Z"
+generated: "2020-09-21T20:40:52.9498027Z"
