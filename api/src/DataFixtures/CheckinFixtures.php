@@ -32,8 +32,6 @@ class CheckinFixtures extends Fixture
             return false;
         }
 
-
-
         $id = Uuid::fromString('8f30215c-d778-480c-ac8c-8492d17c6a15');
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
