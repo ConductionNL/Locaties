@@ -262,6 +262,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
