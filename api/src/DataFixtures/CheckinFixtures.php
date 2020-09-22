@@ -32,8 +32,6 @@ class CheckinFixtures extends Fixture
             return false;
         }
 
-
-
         $id = Uuid::fromString('8f30215c-d778-480c-ac8c-8492d17c6a15');
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
@@ -233,6 +231,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'e3137e4f-e44d-4400-adbd-0fa1b4be9d65']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
