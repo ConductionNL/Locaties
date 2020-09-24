@@ -298,7 +298,8 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('ee032543-1828-4e45-b08d-13b4581458ef');
+
+        $id = Uuid::fromString('a656d7c1-0313-4fd6-aba1-a12a4bcc812a');
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Emmalaan 9');
