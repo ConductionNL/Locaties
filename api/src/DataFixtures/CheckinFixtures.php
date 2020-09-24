@@ -297,5 +297,17 @@ class CheckinFixtures extends Fixture
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('ee032543-1828-4e45-b08d-13b4581458ef');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Emmalaan 9');
+        $accommodation->setDescription('Emmalaan 9');
+        $accommodation->setMaximumAttendeeCapacity(100);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
     }
 }
