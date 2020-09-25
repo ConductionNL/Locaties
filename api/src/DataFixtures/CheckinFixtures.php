@@ -32,8 +32,6 @@ class CheckinFixtures extends Fixture
             return false;
         }
 
-
-
         $id = Uuid::fromString('8f30215c-d778-480c-ac8c-8492d17c6a15');
         $place = new Place();
         $place->setName('Cafe de zotte raaf');
@@ -58,7 +56,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 1');
+        $accommodation->setMaximumAttendeeCapacity(4);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -69,7 +68,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 2');
+        $accommodation->setMaximumAttendeeCapacity(10);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -81,6 +81,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Bar');
         $accommodation->setDescription('Bar');
+        $accommodation->setMaximumAttendeeCapacity(15);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -111,7 +112,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 1');
+        $accommodation->setMaximumAttendeeCapacity(25);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -122,7 +124,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 2');
+        $accommodation->setMaximumAttendeeCapacity(8);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -134,6 +137,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Graven zaal');
         $accommodation->setDescription('In deze kleine zaal kunt u tot max 12 personen prive dineren');
+        $accommodation->setMaximumAttendeeCapacity(12);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -164,7 +168,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Kamer 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Kamer 1');
+        $accommodation->setMaximumAttendeeCapacity(50);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -175,7 +180,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Kamer 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Kamer 2');
+        $accommodation->setMaximumAttendeeCapacity(2);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -206,7 +212,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Caravan plaats');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Caravan plaats');
+        $accommodation->setMaximumAttendeeCapacity(4);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -217,7 +224,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tentplaats');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tentplaats');
+        $accommodation->setMaximumAttendeeCapacity(2);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -233,6 +241,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'e3137e4f-e44d-4400-adbd-0fa1b4be9d65']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -250,6 +259,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Mc Donalds Zuid-Drecht');
         $accommodation->setDescription('Mc Donalds Zuid-Drecht');
+        $accommodation->setMaximumAttendeeCapacity(50);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -263,6 +273,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        $place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -280,6 +291,19 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Emmalaan 7');
         $accommodation->setDescription('Emmalaan 7');
+        $accommodation->setMaximumAttendeeCapacity(100);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('ee032543-1828-4e45-b08d-13b4581458ef');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Emmalaan 9');
+        $accommodation->setDescription('Emmalaan 9');
+        $accommodation->setMaximumAttendeeCapacity(100);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
