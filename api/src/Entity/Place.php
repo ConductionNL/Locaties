@@ -141,7 +141,6 @@ class Place
      *     max = 16
      * )
      */
-
     private $bagId;
 
     /**
