@@ -27,7 +27,8 @@ class CheckinFixtures extends Fixture
         if (
             !$this->params->get('app_build_all_fixtures') &&
             $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
-            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'checking.nu' && strpos($this->params->get('app_domain'), 'checking.nu') == false
         ) {
             return false;
         }
@@ -298,12 +299,84 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('ee032543-1828-4e45-b08d-13b4581458ef');
+        $id = Uuid::fromString('a656d7c1-0313-4fd6-aba1-a12a4bcc812a');
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Emmalaan 9');
         $accommodation->setDescription('Emmalaan 9');
         $accommodation->setMaximumAttendeeCapacity(100);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('2b3ecd96-0058-4532-8f0d-61f41c98e5fc');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('The playground');
+        $accommodation->setDescription('The playground');
+        $accommodation->setMaximumAttendeeCapacity(6);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('746f77f2-f938-412e-bd19-1cbebae47664');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('The Mission room');
+        $accommodation->setDescription('The Mission room');
+        $accommodation->setMaximumAttendeeCapacity(12);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('d7d76f7a-25c6-4d32-b322-2461d1c6ad68');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Champagne Room');
+        $accommodation->setDescription('Champagne Room');
+        $accommodation->setMaximumAttendeeCapacity(8);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('b3995753-7eec-4367-939b-8610416929bd');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Vintage room');
+        $accommodation->setDescription('Vintage room');
+        $accommodation->setMaximumAttendeeCapacity(1);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('f0d185cc-219f-4593-a111-cc79e8aef6bb');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Cloud Nine');
+        $accommodation->setDescription('Cloud Nine');
+        $accommodation->setMaximumAttendeeCapacity(8);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('b3a6925d-fa6a-4d40-80b4-744b1be5eb43');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Creative Room');
+        $accommodation->setDescription('Creative Room');
+        $accommodation->setMaximumAttendeeCapacity(4);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
