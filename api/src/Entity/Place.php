@@ -110,6 +110,26 @@ class Place
     private $organization;
 
     /**
+     * @var string The url of the calendar that belongs to this place
+     *
+     * @example https://example.org/calendar/1
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $calendar;
+
+    /**
+     * @var string The url of the resource that is connected to this place
+     *
+     * @example https://example.org/resource/1
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resource;
+
+    /**
      * @var string Bagnummeraanduiding of this Address
      *
      * @example 0363200000218908
@@ -121,6 +141,7 @@ class Place
      *     max = 16
      * )
      */
+
     private $bagId;
 
     /**
@@ -326,6 +347,30 @@ class Place
     public function setOrganization(string $organization): self
     {
         $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getCalendar(): ?string
+    {
+        return $this->calendar;
+    }
+
+    public function setCalendar(string $calendar): self
+    {
+        $this->calendar = $calendar;
+
+        return $this;
+    }
+
+    public function getResource(): ?string
+    {
+        return $this->resource;
+    }
+
+    public function setResource(string $resource): self
+    {
+        $this->resource = $resource;
 
         return $this;
     }

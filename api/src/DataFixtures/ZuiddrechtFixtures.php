@@ -84,5 +84,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
     }
 }
