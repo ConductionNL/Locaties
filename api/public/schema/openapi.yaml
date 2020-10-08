@@ -1038,16 +1038,6 @@ paths:
           schema:
             type: string
         -
-          name: 'place.organization[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
           name: page
           in: query
           required: false
@@ -4651,6 +4641,24 @@ paths:
               - asc
               - desc
         -
+          name: 'order[calendar]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[bagId]'
           in: query
           required: false
@@ -7514,6 +7522,14 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+        calendar:
+          description: 'The url of the calendar that belongs to this place'
+          type: string
+          nullable: true
+        resource:
+          description: 'The url of the resource that is connected to this place'
+          type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
@@ -7601,6 +7617,14 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+        calendar:
+          description: 'The url of the calendar that belongs to this place'
+          type: string
+          nullable: true
+        resource:
+          description: 'The url of the resource that is connected to this place'
+          type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
@@ -7677,6 +7701,14 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+        calendar:
+          description: 'The url of the calendar that belongs to this place'
+          type: string
+          nullable: true
+        resource:
+          description: 'The url of the resource that is connected to this place'
+          type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
@@ -7773,6 +7805,14 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+        calendar:
+          description: 'The url of the calendar that belongs to this place'
+          type: string
+          nullable: true
+        resource:
+          description: 'The url of the resource that is connected to this place'
+          type: string
+          nullable: true
         bagId:
           description: 'Bagnummeraanduiding of this Address'
           type: string
@@ -8277,6 +8317,14 @@ definitions:
         type: string
         example: 'https://example.org/organizations/1'
         format: url
+      calendar:
+        description: 'The url of the calendar that belongs to this place'
+        type: string
+        example: 'https://example.org/calendar/1'
+      resource:
+        description: 'The url of the resource that is connected to this place'
+        type: string
+        example: 'https://example.org/resource/1'
       bagId:
         description: 'Bagnummeraanduiding of this Address'
         type: string
@@ -8318,12 +8366,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -8359,6 +8407,14 @@ definitions:
         type: string
         example: 'https://example.org/organizations/1'
         format: url
+      calendar:
+        description: 'The url of the calendar that belongs to this place'
+        type: string
+        example: 'https://example.org/calendar/1'
+      resource:
+        description: 'The url of the resource that is connected to this place'
+        type: string
+        example: 'https://example.org/resource/1'
       bagId:
         description: 'Bagnummeraanduiding of this Address'
         type: string
@@ -8400,12 +8456,12 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
         format: date-time
       accommodations:
         description: 'The accommodations in this location'
@@ -8610,12 +8666,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
     required: []
   AuditTrail-write:
     properties:
@@ -8663,12 +8719,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-02 09:30:15'
+        example: '2020-10-08 14:11:32'
     required: []
   ChangeLog-write:
     properties:
