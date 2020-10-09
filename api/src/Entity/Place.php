@@ -137,11 +137,7 @@ class Place
      * @ORM\OneToOne(targetEntity="App\Entity\Address")
      * @ORM\JoinColumn()
      */
-<<<<<<< HEAD
     private $address;
-=======
-    private $bagId;
->>>>>>> staging
 
     /**
      * @var string Website of this Place
