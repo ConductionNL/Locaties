@@ -6,7 +6,11 @@ url: "https://github.com/ConductionNL/locatiecatalogus"
 landingURL: "lc.zaakonline.nl" 
 isBasedOn: "https://github.com/ConductionNL/Proto-component-commonground.git" 
 softwareVersion: "V1.0"
+<<<<<<< HEAD
 releaseDate: "2020-09-10"
+=======
+releaseDate: "2020-02-10"
+>>>>>>> staging
 logo: lc.zaakonline.nl 
 monochromeLogo: img/logo-mono.svg
 

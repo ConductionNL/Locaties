@@ -1032,13 +1032,13 @@ paths:
           schema:
             type: string
         -
-          name: id
+          name: place.organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'id[]'
+          name: 'place.organization[]'
           in: query
           required: false
           schema:
@@ -1047,190 +1047,6 @@ paths:
               type: string
           style: form
           explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: accommodationCategory
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'accommodationCategory[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: floorSize
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'floorSize[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: petsAllowed
-          in: query
-          required: false
-          schema:
-            type: boolean
-        -
-          name: 'petsAllowed[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: boolean
-          style: form
-          explode: true
-        -
-          name: wheelchairAccessible
-          in: query
-          required: false
-          schema:
-            type: boolean
-        -
-          name: 'wheelchairAccessible[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: boolean
-          style: form
-          explode: true
-        -
-          name: numberOfBathroomsTotal
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'numberOfBathroomsTotal[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: floorLevel
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'floorLevel[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: maximumAttendeeCapacity
-          in: query
-          required: false
-          schema:
-            type: integer
-        -
-          name: 'maximumAttendeeCapacity[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: integer
-          style: form
-          explode: true
-        -
-          name: product
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'product[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: dateCreated
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateCreated[]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: dateModified
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'dateModified[]'
-          in: query
-          required: false
-          schema:
-            type: string
         -
           name: page
           in: query
@@ -6288,54 +6104,6 @@ paths:
           schema:
             type: string
         -
-          name: id
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'id[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: name
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'name[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
-          name: description
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'description[]'
-          in: query
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-        -
           name: organization
           in: query
           required: false
@@ -6352,6 +6120,71 @@ paths:
           style: form
           explode: true
         -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+<<<<<<< HEAD
           name: calendar
           in: query
           required: false
@@ -6370,9 +6203,14 @@ paths:
         -
           name: resource
           in: query
+=======
+          name: validOn
+>>>>>>> staging
           required: false
+          description: 'Returns object as valid on a given date time'
           schema:
             type: string
+<<<<<<< HEAD
         -
           name: 'resource[]'
           in: query
@@ -6613,6 +6451,8 @@ paths:
           description: 'Returns object as valid on a given date time'
           schema:
             type: string
+=======
+>>>>>>> staging
             format: date-time
           in: query
         -
@@ -10287,6 +10127,7 @@ definitions:
         type: string
         example: b
         maxLength: 255
+<<<<<<< HEAD
       postalCode:
         description: 'Postalcode of a Address'
         type: string
@@ -10312,6 +10153,47 @@ definitions:
         example: 'PO Box 1234'
         maxLength: 255
     required: []
+=======
+      place:
+        description: 'The location this accommodation belongs to'
+        type: \Place
+      accommodationProperties: []
+    required:
+      - name
+  AccommodationProperty-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      value:
+        description: 'accommodationProp value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+      property: []
+      accommodation: []
+    required:
+      - value
+  AccommodationProperty-write:
+    properties:
+      value:
+        description: 'accommodationProp value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      property: []
+      accommodation: []
+    required:
+      - value
+>>>>>>> staging
   Place-read:
     properties:
       id:
@@ -10376,12 +10258,20 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
         format: date-time
       dateCreated:
         description: 'The moment this resource was created'
@@ -10464,12 +10354,20 @@ definitions:
       openingTime:
         description: 'the opening time of the location'
         type: string
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
         format: date-time
       closingTime:
         description: 'the closing time of the location'
         type: string
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
         format: date-time
       address:
         description: 'The address  of this place'
@@ -10677,12 +10575,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
     required: []
   AuditTrail-write:
     properties:
@@ -10730,12 +10636,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-10-09 05:25:29'
+=======
+        example: '2020-10-02 09:30:15'
+>>>>>>> staging
     required: []
   ChangeLog-write:
     properties:
@@ -10759,6 +10673,7 @@ tags:
       
       
   -
+<<<<<<< HEAD
     name: Address
     description: |
       All properties that the entity Address holds.
@@ -10767,6 +10682,10 @@ tags:
   -
     name: Place
     description: |
+=======
+    name: Place
+    description: |
+>>>>>>> staging
       A building or terrain with an address that can host accommodations.
       
       

@@ -53,7 +53,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
+ * @ApiFilter(SearchFilter::class, properties={"organization":"exact"})
  */
 class Place
 {
@@ -137,7 +137,11 @@ class Place
      * @ORM\OneToOne(targetEntity="App\Entity\Address")
      * @ORM\JoinColumn()
      */
+<<<<<<< HEAD
     private $address;
+=======
+    private $bagId;
+>>>>>>> staging
 
     /**
      * @var string Website of this Place
