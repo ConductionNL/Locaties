@@ -130,19 +130,14 @@ class Place
     private $resource;
 
     /**
-     * @var string Bagnummeraanduiding of this Address
+     * @var Address The address  of this place
      *
-     * @example 0363200000218908
-     *
-     * @Gedmo\Versioned
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=16, nullable=true)
-     * @Assert\Length(
-     *     max = 16
-     * )
+     * @Groups({"read","write"})
+     * @MaxDepth(1)
+     * @ORM\OneToOne(targetEntity="App\Entity\Address")
+     * @ORM\JoinColumn()
      */
-
-    private $bagId;
+    private $address;
 
     /**
      * @var string Website of this Place
@@ -375,14 +370,14 @@ class Place
         return $this;
     }
 
-    public function getBagId(): ?string
+    public function getAddress(): ?Address
     {
-        return $this->bagId;
+        return $this->address;
     }
 
-    public function setBagId(string $bagId): self
+    public function setAddress(?Address $address): self
     {
-        $this->bagId = $bagId;
+        $this->address = $address;
 
         return $this;
     }

@@ -40,7 +40,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'8b3f28c4-4163-47f1-9242-a4050bc26ede']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(16, 00);
         $place->setOpeningTime($openingTime);
@@ -96,7 +96,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'a3c5906a-5cd2-4a51-82a6-5833bfa094e1']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(11, 00);
         $place->setOpeningTime($openingTime);
@@ -152,7 +152,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'f302b75e-a233-4ddf-95b5-f8603f2e80e9']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -196,7 +196,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'0d3b7b6d-5ab2-442b-b4ff-472fd4112922']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -242,7 +242,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'e3137e4f-e44d-4400-adbd-0fa1b4be9d65']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -274,7 +274,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
