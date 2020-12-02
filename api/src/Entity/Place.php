@@ -242,7 +242,6 @@ class Place
      * @Groups({"read", "write"})
      * @ORM\Column(type="time")
      * @Assert\NotNull
-     * @Assert\DateTime
      */
     private $openingTime;
 
@@ -255,7 +254,6 @@ class Place
      * @Groups({"read", "write"})
      * @ORM\Column(type="time")
      * @Assert\NotNull
-     * @Assert\DateTime
      */
     private $closingTime;
 
