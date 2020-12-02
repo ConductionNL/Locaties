@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Accommodation;
+use App\Entity\Address;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Accommodation|null find($id, $lockMode = null, $lockVersion = null)
- * @method Accommodation|null findOneBy(array $criteria, array $orderBy = null)
- * @method Accommodation[]    findAll()
- * @method Accommodation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Address|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Address|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Address[]    findAll()
+ * @method Address[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AccommodationRepository extends ServiceEntityRepository
+class AddressRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Accommodation::class);
+        parent::__construct($registry, Address::class);
     }
 
     // /**
-    //  * @return Accommodation[] Returns an array of Accommodation objects
+    //  * @return Address[] Returns an array of Address objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AccommodationRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Accommodation
+    public function findOneBySomeField($value): ?Address
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

@@ -7,7 +7,7 @@ use App\Entity\Place;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -27,7 +27,8 @@ class CheckinFixtures extends Fixture
         if (
             !$this->params->get('app_build_all_fixtures') &&
             $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
-            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'checking.nu' && strpos($this->params->get('app_domain'), 'checking.nu') == false
         ) {
             return false;
         }
@@ -39,7 +40,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'8b3f28c4-4163-47f1-9242-a4050bc26ede']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(16, 00);
         $place->setOpeningTime($openingTime);
@@ -56,7 +57,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 1');
+        $accommodation->setMaximumAttendeeCapacity(4);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -67,7 +69,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 2');
+        $accommodation->setMaximumAttendeeCapacity(10);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -79,6 +82,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Bar');
         $accommodation->setDescription('Bar');
+        $accommodation->setMaximumAttendeeCapacity(15);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -92,7 +96,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'a3c5906a-5cd2-4a51-82a6-5833bfa094e1']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(11, 00);
         $place->setOpeningTime($openingTime);
@@ -109,7 +113,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 1');
+        $accommodation->setMaximumAttendeeCapacity(25);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -120,7 +125,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tafel 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tafel 2');
+        $accommodation->setMaximumAttendeeCapacity(8);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -132,6 +138,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Graven zaal');
         $accommodation->setDescription('In deze kleine zaal kunt u tot max 12 personen prive dineren');
+        $accommodation->setMaximumAttendeeCapacity(12);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -145,7 +152,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'f302b75e-a233-4ddf-95b5-f8603f2e80e9']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -162,7 +169,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Kamer 1');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Kamer 1');
+        $accommodation->setMaximumAttendeeCapacity(50);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -173,7 +181,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Kamer 2');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Kamer 2');
+        $accommodation->setMaximumAttendeeCapacity(2);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -187,7 +196,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'0d3b7b6d-5ab2-442b-b4ff-472fd4112922']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
-        $place->setBagId('0363200000094929');
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -204,7 +213,8 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Caravan plaats');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Caravan plaats');
+        $accommodation->setMaximumAttendeeCapacity(4);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -215,12 +225,16 @@ class CheckinFixtures extends Fixture
         $accommodation = new Accommodation();
         $accommodation->setPlace($place);
         $accommodation->setName('Tentplaats');
-        $accommodation->setDescription('Trouwzaal');
+        $accommodation->setDescription('Tentplaats');
+        $accommodation->setMaximumAttendeeCapacity(2);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $manager->flush();
+
         $id = Uuid::fromString('fe5d966c-8999-4df5-9679-a0a8fad6f8c8');
         $place = new Place();
         $place->setName('Mc Donalds Zuid-Drecht');
@@ -228,6 +242,7 @@ class CheckinFixtures extends Fixture
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'e3137e4f-e44d-4400-adbd-0fa1b4be9d65']));
         $place->setPublicAccess(true);
         $place->setSmokingAllowed(false);
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -245,6 +260,7 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Mc Donalds Zuid-Drecht');
         $accommodation->setDescription('Mc Donalds Zuid-Drecht');
+        $accommodation->setMaximumAttendeeCapacity(50);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
@@ -253,12 +269,12 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('75a116e3-0e9b-4ca7-ae3b-190a70d519a7');
         $place = new Place();
-        $place->setName('Creative Ground');
-        $place->setDescription('Creative Ground');
+        $place->setName('Creative Grounds');
+        $place->setDescription('Creative Grounds');
         $place->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'62bff497-cb91-443e-9da9-21a0b38cd536']));
         $place->setPublicAccess(true);
-        $place->setBagId('0363200000094929');
         $place->setSmokingAllowed(false);
+        //$place->setBagId('0363200000094929');
         $openingTime = new DateTime();
         $openingTime->setTime(00, 00);
         $place->setOpeningTime($openingTime);
@@ -276,12 +292,107 @@ class CheckinFixtures extends Fixture
         $accommodation->setPlace($place);
         $accommodation->setName('Emmalaan 7');
         $accommodation->setDescription('Emmalaan 7');
+        $accommodation->setMaximumAttendeeCapacity(100);
         $manager->persist($accommodation);
         $accommodation->setId($id);
         $manager->persist($accommodation);
         $manager->flush();
         $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('9000ffac-662d-4daf-9d26-79757a221a5a');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('champagne room');
+        $accommodation->setDescription('champagne room');
+        $accommodation->setMaximumAttendeeCapacity(10);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
         $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('a656d7c1-0313-4fd6-aba1-a12a4bcc812a');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Emmalaan 9');
+        $accommodation->setDescription('Emmalaan 9');
+        $accommodation->setMaximumAttendeeCapacity(100);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('2b3ecd96-0058-4532-8f0d-61f41c98e5fc');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('The playground');
+        $accommodation->setDescription('The playground');
+        $accommodation->setMaximumAttendeeCapacity(6);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('746f77f2-f938-412e-bd19-1cbebae47664');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('The Mission room');
+        $accommodation->setDescription('The Mission room');
+        $accommodation->setMaximumAttendeeCapacity(12);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('d7d76f7a-25c6-4d32-b322-2461d1c6ad68');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Champagne Room');
+        $accommodation->setDescription('Champagne Room');
+        $accommodation->setMaximumAttendeeCapacity(8);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('b3995753-7eec-4367-939b-8610416929bd');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Vintage room');
+        $accommodation->setDescription('Vintage room');
+        $accommodation->setMaximumAttendeeCapacity(1);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('f0d185cc-219f-4593-a111-cc79e8aef6bb');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Cloud Nine');
+        $accommodation->setDescription('Cloud Nine');
+        $accommodation->setMaximumAttendeeCapacity(8);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('b3a6925d-fa6a-4d40-80b4-744b1be5eb43');
+        $accommodation = new Accommodation();
+        $accommodation->setPlace($place);
+        $accommodation->setName('Creative Room');
+        $accommodation->setDescription('Creative Room');
+        $accommodation->setMaximumAttendeeCapacity(4);
+        $manager->persist($accommodation);
+        $accommodation->setId($id);
+        $manager->persist($accommodation);
+        $manager->flush();
+        $accommodation = $manager->getRepository('App:Accommodation')->findOneBy(['id'=> $id]);
     }
 }

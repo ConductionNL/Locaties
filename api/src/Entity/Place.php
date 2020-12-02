@@ -53,7 +53,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
- * @ApiFilter(SearchFilter::class)
+ * @ApiFilter(SearchFilter::class, properties={"organization":"partial"})
  */
 class Place
 {
@@ -110,18 +110,34 @@ class Place
     private $organization;
 
     /**
-     * @var string Bagnummeraanduiding of this Address
+     * @var string The url of the calendar that belongs to this place
      *
-     * @example 0363200000218908
+     * @example https://example.org/calendar/1
      *
-     * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=16, nullable=true)
-     * @Assert\Length(
-     *     max = 16
-     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $bagId;
+    private $calendar;
+
+    /**
+     * @var string The url of the resource that is connected to this place
+     *
+     * @example https://example.org/resource/1
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resource;
+
+    /**
+     * @var Address The address  of this place
+     *
+     * @Groups({"read","write"})
+     * @MaxDepth(1)
+     * @ORM\OneToOne(targetEntity="App\Entity\Address")
+     * @ORM\JoinColumn()
+     */
+    private $address;
 
     /**
      * @var string Website of this Place
@@ -226,7 +242,6 @@ class Place
      * @Groups({"read", "write"})
      * @ORM\Column(type="time")
      * @Assert\NotNull
-     * @Assert\DateTime
      */
     private $openingTime;
 
@@ -239,7 +254,6 @@ class Place
      * @Groups({"read", "write"})
      * @ORM\Column(type="time")
      * @Assert\NotNull
-     * @Assert\DateTime
      */
     private $closingTime;
 
@@ -330,14 +344,38 @@ class Place
         return $this;
     }
 
-    public function getBagId(): ?string
+    public function getCalendar(): ?string
     {
-        return $this->bagId;
+        return $this->calendar;
     }
 
-    public function setBagId(string $bagId): self
+    public function setCalendar(string $calendar): self
     {
-        $this->bagId = $bagId;
+        $this->calendar = $calendar;
+
+        return $this;
+    }
+
+    public function getResource(): ?string
+    {
+        return $this->resource;
+    }
+
+    public function setResource(string $resource): self
+    {
+        $this->resource = $resource;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
