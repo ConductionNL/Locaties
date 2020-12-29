@@ -72,7 +72,7 @@ class AccommodationProperty
     private $id;
 
     /**
-     * @var string accommodationProp value
+     * @var string accommodationProperty value
      *
      * @example accommodationProp value
      *
@@ -87,16 +87,17 @@ class AccommodationProperty
     private $value;
 
     /**
-     * @var string accommodationProp key
+     * @var string accommodationProperty key
      *
      * @example 4126
-     *
      *
      * @Groups({"read"})
      */
     private $key;
 
     /**
+     * @var array property linked to this accommodation property
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="accommodationProperties")
      * @ORM\JoinColumn(name="property")
@@ -105,6 +106,8 @@ class AccommodationProperty
     private $property;
 
     /**
+     * @var array accommodation linked to this accommodation property
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Accommodation", inversedBy="accommodationProperties")
      * @ORM\JoinColumn(name="accommodation")
