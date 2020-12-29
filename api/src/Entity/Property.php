@@ -114,6 +114,8 @@ class Property
     private $key;
 
     /**
+     * @var array placeProperty this property is linked to
+     *
      * @Groups({"read","write"})
      * @ORM\OneToMany(targetEntity="App\Entity\PlaceProperty", mappedBy="property")
      * @MaxDepth(1)
@@ -121,6 +123,8 @@ class Property
     private $placeProperties;
 
     /**
+     * @var array accommodationProperty this property is linked to
+     *
      * @Groups({"read","write"})
      * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProperty", mappedBy="property")
      * @MaxDepth(1)

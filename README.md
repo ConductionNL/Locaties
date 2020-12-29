@@ -1,6 +1,6 @@
 # About this component
 
-Het component "Locaties" is ontwikkeld voor de gemeente Utrecht en beschrijft een geografische locatie met de daarbij horende kenmerken. Dit stelt je in staat om locaties te raadplegen en te beheren. Daarnaast is het mogelijk hier de kenmerken van de locaties te registreren en aan te passen.
+Het Locatie Component implementeert de places en accommodations strategie vanuit schema.org. Het vormt daarmee de basis voor het bijhouden en verhuren van ruimtes en kan in de meest simpele configuratie worden gebruikt voor planningsvraagstukken. Bijvoorbeeld bij gebouwen rondom te reserveren ruimtes zoals (vergader)zalen. Dit component is nadrukkelijk ontworpen om samen met het [PDC](https://github.com/ConductionNL/productenendienstencatalogus) het commercieel verhuren van gehele gebouwen, of ruimtes daarin te faciliteren. Hiermee kan het de technische basis vormen voor appartementen/kamerverhuur platforms, hotel-software of zelfs camping- software. 
 
 ## Documentation
 

@@ -205,6 +205,8 @@ class Accommodation
     private $place;
 
     /**
+     * @var array accommodation properties
+     *
      * @Groups({"read","write"})
      * @ORM\OneToMany(targetEntity="App\Entity\AccommodationProperty", mappedBy="accommodation")
      * @MaxDepth(1)
