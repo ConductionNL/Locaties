@@ -216,8 +216,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="boolean")
-     * @Assert\NotNull
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $publicAccess;
 
@@ -228,8 +227,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="boolean")
-     * @Assert\NotNull
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $smokingAllowed;
 
@@ -240,8 +238,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="time")
-     * @Assert\NotNull
+     * @ORM\Column(type="time", nullable=true)
      */
     private $openingTime;
 
@@ -252,8 +249,7 @@ class Place
      *
      * @Gedmo\Versioned
      * @Groups({"read", "write"})
-     * @ORM\Column(type="time")
-     * @Assert\NotNull
+     * @ORM\Column(type="time", nullable=true)
      */
     private $closingTime;
 
