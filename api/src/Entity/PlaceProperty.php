@@ -96,6 +96,8 @@ class PlaceProperty
     private $key;
 
     /**
+     * @var array property linked to this place property
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="placeProperties")
      * @ORM\JoinColumn(name="property")
@@ -104,6 +106,8 @@ class PlaceProperty
     private $property;
 
     /**
+     * @var array place linked to this place property
+     *
      * @Groups({"read","write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Place", inversedBy="placeProperties")
      * @ORM\JoinColumn(name="place")
