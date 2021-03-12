@@ -134,7 +134,7 @@ class Place
      *
      * @Groups({"read","write"})
      * @MaxDepth(1)
-     * @ORM\OneToOne(targetEntity="App\Entity\Address")
+     * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist"})
      * @ORM\JoinColumn()
      */
     private $address;
