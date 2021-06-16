@@ -8215,7 +8215,7 @@ components:
             $ref: '#/components/schemas/AccommodationProperty:jsonld-write'
     AccommodationProperty-read:
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a accommodation'
       properties:
         id:
           readOnly: true
@@ -8257,7 +8257,7 @@ components:
         - value
     AccommodationProperty-write:
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a accommodation'
       required:
         - value
       properties:
@@ -8278,7 +8278,7 @@ components:
               $ref: '#/components/schemas/Accommodation-write'
     'AccommodationProperty:jsonld-read':
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a accommodation'
       properties:
         '@context':
           readOnly: true
@@ -8329,7 +8329,7 @@ components:
         - value
     'AccommodationProperty:jsonld-write':
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a accommodation'
       required:
         - value
       properties:
@@ -9327,7 +9327,7 @@ components:
             $ref: '#/components/schemas/Accommodation:jsonld-write'
     PlaceProperty-read:
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a place'
       properties:
         id:
           readOnly: true
@@ -9369,7 +9369,7 @@ components:
         - value
     PlaceProperty-write:
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a place'
       required:
         - value
       properties:
@@ -9390,7 +9390,7 @@ components:
               $ref: '#/components/schemas/Place-write'
     'PlaceProperty:jsonld-read':
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a place'
       properties:
         '@context':
           readOnly: true
@@ -9441,7 +9441,7 @@ components:
         - value
     'PlaceProperty:jsonld-write':
       type: object
-      description: ''
+      description: 'A property meant as an attribute for a place'
       required:
         - value
       properties:
@@ -9471,7 +9471,7 @@ components:
               $ref: '#/components/schemas/Place:jsonld-write'
     Property-read:
       type: object
-      description: ''
+      description: 'A property meant as an attribute'
       properties:
         id:
           readOnly: true
@@ -9515,7 +9515,7 @@ components:
         - key
     Property-write:
       type: object
-      description: ''
+      description: 'A property meant as an attribute'
       required:
         - name
         - key
@@ -9542,7 +9542,7 @@ components:
             $ref: '#/components/schemas/AccommodationProperty-write'
     'Property:jsonld-read':
       type: object
-      description: ''
+      description: 'A property meant as an attribute'
       properties:
         '@context':
           readOnly: true
@@ -9595,7 +9595,7 @@ components:
         - key
     'Property:jsonld-write':
       type: object
-      description: ''
+      description: 'A property meant as an attribute'
       required:
         - name
         - key
@@ -9630,6 +9630,280 @@ components:
           items:
             $ref: '#/components/schemas/AccommodationProperty:jsonld-write'
 definitions:
+  Accommodation-read:
+    properties:
+      id:
+        description: ''
+        type: \UuidInterface
+      name:
+        description: 'The name of this accommodation is displayed as a title to end users'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      description:
+        description: 'The description of this accommodation is displayed to end users as additional information'
+        type: string
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      accommodationCategory:
+        description: 'The category this accomodation falls into'
+        type: string
+        example: Restaurant
+        maxLength: 255
+      floorSize:
+        description: 'The floor surface area of the accommodation'
+        type: string
+        example: '25 m^2'
+        maxLength: 255
+      petsAllowed:
+        description: 'Answers the question if pets are allowed or not'
+        type: bool
+        example: 'true'
+      wheelchairAccessible:
+        description: 'Answers the question if the accomodation is wheelchair accessible'
+        type: bool
+        example: 'true'
+      numberOfBathroomsTotal:
+        description: 'The number of available toilets at the accommodation'
+        type: int
+        example: '10'
+      floorLevel:
+        description: 'The floor level the accommodation is situated on'
+        type: int
+        example: '10'
+      maximumAttendeeCapacity:
+        description: 'The maximum number of attendees the accommodation can facilitate'
+        type: int
+        example: '10'
+      product:
+        description: 'The product this accommodation is related to'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+      place:
+        description: 'The location this accommodation belongs to'
+        type: \Place
+      accommodationProperties:
+        description: 'accommodation properties'
+        type: array
+    required:
+      - name
+  Accommodation-write:
+    properties:
+      name:
+        description: 'The name of this accommodation is displayed as a title to end users'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      description:
+        description: 'The description of this accommodation is displayed to end users as additional information'
+        type: string
+        example: 'This is the best accommodation ever'
+        maxLength: 2550
+      accommodationCategory:
+        description: 'The category this accomodation falls into'
+        type: string
+        example: Restaurant
+        maxLength: 255
+      floorSize:
+        description: 'The floor surface area of the accommodation'
+        type: string
+        example: '25 m^2'
+        maxLength: 255
+      petsAllowed:
+        description: 'Answers the question if pets are allowed or not'
+        type: bool
+        example: 'true'
+      wheelchairAccessible:
+        description: 'Answers the question if the accomodation is wheelchair accessible'
+        type: bool
+        example: 'true'
+      numberOfBathroomsTotal:
+        description: 'The number of available toilets at the accommodation'
+        type: int
+        example: '10'
+      floorLevel:
+        description: 'The floor level the accommodation is situated on'
+        type: int
+        example: '10'
+      maximumAttendeeCapacity:
+        description: 'The maximum number of attendees the accommodation can facilitate'
+        type: int
+        example: '10'
+      product:
+        description: 'The product this accommodation is related to'
+        type: string
+        example: 'My Accommodation'
+        maxLength: 255
+      place:
+        description: 'The location this accommodation belongs to'
+        type: \Place
+      accommodationProperties:
+        description: 'accommodation properties'
+        type: array
+    required:
+      - name
+  AccommodationProperty-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      value:
+        description: 'accommodationProperty value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+      property:
+        description: 'property linked to this accommodation property'
+        type: array
+      accommodation:
+        description: 'accommodation linked to this accommodation property'
+        type: array
+    required:
+      - value
+  AccommodationProperty-write:
+    properties:
+      value:
+        description: 'accommodationProperty value'
+        type: string
+        example: 'accommodationProp value'
+        maxLength: 255
+      property:
+        description: 'property linked to this accommodation property'
+        type: array
+      accommodation:
+        description: 'accommodation linked to this accommodation property'
+        type: array
+    required:
+      - value
+  Address-read:
+    properties:
+      id:
+        description: 'Uuid of this address'
+        type: string
+        format: uuid
+      name:
+        description: 'Name of this Address'
+        type: string
+        example: 'Amsterdam Office'
+        maxLength: 255
+      bagnummeraanduiding:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
+        example: '0363200000218908'
+        maxLength: 16
+      street:
+        description: 'Street of this Address'
+        type: string
+        example: appelstreet
+        maxLength: 255
+      houseNumber:
+        description: 'House number of this Address'
+        type: string
+        example: '8'
+        maxLength: 255
+      houseNumberSuffix:
+        description: 'House number suffix of this Address'
+        type: string
+        example: b
+        maxLength: 255
+      postalCode:
+        description: 'Postalcode of a Address'
+        type: string
+        example: 1234AB
+      region:
+        description: 'region Region of a Address'
+        type: string
+        example: Noord-Holland
+        maxLength: 255
+      locality:
+        description: 'Locality of a Address'
+        type: string
+        example: Oud-Zuid
+        maxLength: 255
+      country:
+        description: 'Country of a Address'
+        type: string
+        example: 'The Netherlands'
+        maxLength: 255
+      postOfficeBoxNumber:
+        description: 'Post office box number of a Address'
+        type: string
+        example: 'PO Box 1234'
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+    required: []
+  Address-write:
+    properties:
+      name:
+        description: 'Name of this Address'
+        type: string
+        example: 'Amsterdam Office'
+        maxLength: 255
+      bagnummeraanduiding:
+        description: 'Bagnummeraanduiding of this Address'
+        type: string
+        example: '0363200000218908'
+        maxLength: 16
+      street:
+        description: 'Street of this Address'
+        type: string
+        example: appelstreet
+        maxLength: 255
+      houseNumber:
+        description: 'House number of this Address'
+        type: string
+        example: '8'
+        maxLength: 255
+      houseNumberSuffix:
+        description: 'House number suffix of this Address'
+        type: string
+        example: b
+        maxLength: 255
+      postalCode:
+        description: 'Postalcode of a Address'
+        type: string
+        example: 1234AB
+      region:
+        description: 'region Region of a Address'
+        type: string
+        example: Noord-Holland
+        maxLength: 255
+      locality:
+        description: 'Locality of a Address'
+        type: string
+        example: Oud-Zuid
+        maxLength: 255
+      country:
+        description: 'Country of a Address'
+        type: string
+        example: 'The Netherlands'
+        maxLength: 255
+      postOfficeBoxNumber:
+        description: 'Post office box number of a Address'
+        type: string
+        example: 'PO Box 1234'
+        maxLength: 255
+    required: []
   Place-read:
     properties:
       id:
@@ -9832,161 +10106,6 @@ definitions:
         type: array
     required:
       - value
-  AccommodationProperty-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      value:
-        description: 'accommodationProperty value'
-        type: string
-        example: 'accommodationProp value'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      property:
-        description: 'property linked to this accommodation property'
-        type: array
-      accommodation:
-        description: 'accommodation linked to this accommodation property'
-        type: array
-    required:
-      - value
-  AccommodationProperty-write:
-    properties:
-      value:
-        description: 'accommodationProperty value'
-        type: string
-        example: 'accommodationProp value'
-        maxLength: 255
-      property:
-        description: 'property linked to this accommodation property'
-        type: array
-      accommodation:
-        description: 'accommodation linked to this accommodation property'
-        type: array
-    required:
-      - value
-  Address-read:
-    properties:
-      id:
-        description: 'Uuid of this address'
-        type: string
-        format: uuid
-      name:
-        description: 'Name of this Address'
-        type: string
-        example: 'Amsterdam Office'
-        maxLength: 255
-      bagnummeraanduiding:
-        description: 'Bagnummeraanduiding of this Address'
-        type: string
-        example: '0363200000218908'
-        maxLength: 16
-      street:
-        description: 'Street of this Address'
-        type: string
-        example: appelstreet
-        maxLength: 255
-      houseNumber:
-        description: 'House number of this Address'
-        type: string
-        example: '8'
-        maxLength: 255
-      houseNumberSuffix:
-        description: 'House number suffix of this Address'
-        type: string
-        example: b
-        maxLength: 255
-      postalCode:
-        description: 'Postalcode of a Address'
-        type: string
-        example: 1234AB
-      region:
-        description: 'region Region of a Address'
-        type: string
-        example: Noord-Holland
-        maxLength: 255
-      locality:
-        description: 'Locality of a Address'
-        type: string
-        example: Oud-Zuid
-        maxLength: 255
-      country:
-        description: 'Country of a Address'
-        type: string
-        example: 'The Netherlands'
-        maxLength: 255
-      postOfficeBoxNumber:
-        description: 'Post office box number of a Address'
-        type: string
-        example: 'PO Box 1234'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-    required: []
-  Address-write:
-    properties:
-      name:
-        description: 'Name of this Address'
-        type: string
-        example: 'Amsterdam Office'
-        maxLength: 255
-      bagnummeraanduiding:
-        description: 'Bagnummeraanduiding of this Address'
-        type: string
-        example: '0363200000218908'
-        maxLength: 16
-      street:
-        description: 'Street of this Address'
-        type: string
-        example: appelstreet
-        maxLength: 255
-      houseNumber:
-        description: 'House number of this Address'
-        type: string
-        example: '8'
-        maxLength: 255
-      houseNumberSuffix:
-        description: 'House number suffix of this Address'
-        type: string
-        example: b
-        maxLength: 255
-      postalCode:
-        description: 'Postalcode of a Address'
-        type: string
-        example: 1234AB
-      region:
-        description: 'region Region of a Address'
-        type: string
-        example: Noord-Holland
-        maxLength: 255
-      locality:
-        description: 'Locality of a Address'
-        type: string
-        example: Oud-Zuid
-        maxLength: 255
-      country:
-        description: 'Country of a Address'
-        type: string
-        example: 'The Netherlands'
-        maxLength: 255
-      postOfficeBoxNumber:
-        description: 'Post office box number of a Address'
-        type: string
-        example: 'PO Box 1234'
-        maxLength: 255
-    required: []
   Property-read:
     properties:
       id:
@@ -10050,178 +10169,6 @@ definitions:
     required:
       - name
       - key
-  Accommodation-read:
-    properties:
-      id:
-        description: ''
-        type: \UuidInterface
-      name:
-        description: 'The name of this accommodation is displayed as a title to end users'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      description:
-        description: 'The description of this accommodation is displayed to end users as additional information'
-        type: string
-        example: 'This is the best accommodation ever'
-        maxLength: 2550
-      accommodationCategory:
-        description: 'The category this accomodation falls into'
-        type: string
-        example: Restaurant
-        maxLength: 255
-      floorSize:
-        description: 'The floor surface area of the accommodation'
-        type: string
-        example: '25 m^2'
-        maxLength: 255
-      petsAllowed:
-        description: 'Answers the question if pets are allowed or not'
-        type: bool
-        example: 'true'
-      wheelchairAccessible:
-        description: 'Answers the question if the accomodation is wheelchair accessible'
-        type: bool
-        example: 'true'
-      numberOfBathroomsTotal:
-        description: 'The number of available toilets at the accommodation'
-        type: int
-        example: '10'
-      floorLevel:
-        description: 'The floor level the accommodation is situated on'
-        type: int
-        example: '10'
-      maximumAttendeeCapacity:
-        description: 'The maximum number of attendees the accommodation can facilitate'
-        type: int
-        example: '10'
-      product:
-        description: 'The product this accommodation is related to'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
-      dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
-      place:
-        description: 'The location this accommodation belongs to'
-        type: \Place
-      accommodationProperties:
-        description: 'accommodation properties'
-        type: array
-    required:
-      - name
-  Accommodation-write:
-    properties:
-      name:
-        description: 'The name of this accommodation is displayed as a title to end users'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      description:
-        description: 'The description of this accommodation is displayed to end users as additional information'
-        type: string
-        example: 'This is the best accommodation ever'
-        maxLength: 2550
-      accommodationCategory:
-        description: 'The category this accomodation falls into'
-        type: string
-        example: Restaurant
-        maxLength: 255
-      floorSize:
-        description: 'The floor surface area of the accommodation'
-        type: string
-        example: '25 m^2'
-        maxLength: 255
-      petsAllowed:
-        description: 'Answers the question if pets are allowed or not'
-        type: bool
-        example: 'true'
-      wheelchairAccessible:
-        description: 'Answers the question if the accomodation is wheelchair accessible'
-        type: bool
-        example: 'true'
-      numberOfBathroomsTotal:
-        description: 'The number of available toilets at the accommodation'
-        type: int
-        example: '10'
-      floorLevel:
-        description: 'The floor level the accommodation is situated on'
-        type: int
-        example: '10'
-      maximumAttendeeCapacity:
-        description: 'The maximum number of attendees the accommodation can facilitate'
-        type: int
-        example: '10'
-      product:
-        description: 'The product this accommodation is related to'
-        type: string
-        example: 'My Accommodation'
-        maxLength: 255
-      place:
-        description: 'The location this accommodation belongs to'
-        type: \Place
-      accommodationProperties:
-        description: 'accommodation properties'
-        type: array
-    required:
-      - name
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-03-12 15:12:30'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-03-12 15:12:30'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   AuditTrail-read:
     properties:
       id:
@@ -10326,12 +10273,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-12 15:12:30'
+        example: '2021-06-16 14:54:28'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-12 15:12:30'
+        example: '2021-06-16 14:54:28'
     required: []
   AuditTrail-write:
     properties:
@@ -10341,23 +10288,70 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-06-16 14:54:28'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-06-16 14:54:28'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
 tags:
   -
-    name: Place
+    name: Accommodation
     description: |
-      A building or terrain with an address that can host accommodations.
-      
-      
-  -
-    name: PlaceProperty
-    description: |
-      
+      A room or other accommodation that can facilitate people.
       
       
   -
     name: AccommodationProperty
     description: |
-      
+      A property meant as an attribute for a accommodation
       
       
   -
@@ -10367,25 +10361,31 @@ tags:
       
       Entity Address exists of an id, a name, a bagnummeraanduiding, a street, a houseNumber, a houseNumberSufix, a postalCode, a region, a locality and country.
   -
+    name: Place
+    description: |
+      A building or terrain with an address that can host accommodations.
+      
+      
+  -
+    name: PlaceProperty
+    description: |
+      A property meant as an attribute for a place
+      
+      
+  -
     name: Property
     description: |
-      
-      
-      
-  -
-    name: Accommodation
-    description: |
-      A room or other accommodation that can facilitate people.
+      A property meant as an attribute
       
       
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
@@ -10396,15 +10396,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
 host: irc.zaakonline.nl
 servers:
   -
