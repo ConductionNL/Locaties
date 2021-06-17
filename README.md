@@ -1,9 +1,15 @@
 # Locatie Catalogus
+[![StyleCI](https://github.styleci.io/repos/206144429/shield?branch=master)](https://github.styleci.io/repos/206144429?branch=master)
+[![Docker Image CI](https://github.com/ConductionNL/locatiecatalogus/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/locatiecatalogus/actions?query=workflow%3A"Docker+Image+CI")
+[![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/locatiecatalogus)](https://artifacthub.io/packages/helm/ocatiecatalogus/ocatiecatalogus)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/locatiecatalogus?branch=master)](https://bettercodehub.com/)
 
 Description
 ----
-The location catalogue is the base for keeping track of spaces and any type of Location. It is designed to be used in combination with our calendar service and product and services catalogue. With the combination of these 3 components you can build a solid application in which you can keep track of space rentals, occupations and any on location appointments. This component is based on schema.org ‘s Location and Address.
+Het Locatie Component implementeert de places en accommodations strategie vanuit schema.org. Het vormt daarmee de basis voor het bijhouden en verhuren van ruimtes en kan in de meest simpele configuratie worden gebruikt voor planningsvraagstukken.
 
+Bijvoorbeeld bij gebouwen rondom te reserveren ruimtes zoals (vergader)zalen.
+Dit component is nadrukkelijk ontworpen om samen met het PDC het commercieel verhuren van gehele gebouwen, of ruimtes daarin te faciliteren. Hiermee kan het de technische basis vormen voor appartementen/kamerverhuur platforms, hotel-software of zelfs camping-software.
 Additional Information
 ----
 

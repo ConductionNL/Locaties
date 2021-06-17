@@ -5,14 +5,14 @@ info:
   description: |
     API Details
     - Component: 
-    - Reference: ocatiecatalogus
+    - Reference: locatiecatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/locatiecatalogus) / [zip](https://github.com/ConductionNL/locatiecatalogus/archive/master.zip)
     - Docker Image: [online]() 
-    - Datamodel: [postman](schema/ocatiecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/locatiecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
-    &#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;         
+    Het Locatie Component implementeert de places en accommodations strategie vanuit schema.org. Het vormt daarmee de basis voor het bijhouden en verhuren van ruimtes en kan in de meest simpele configuratie worden gebruikt voor planningsvraagstukken. Bijvoorbeeld bij gebouwen rondom te reserveren ruimtes zoals (vergader)zalen. Dit component is nadrukkelijk ontworpen om samen met het PDC het commercieel verhuren van gehele gebouwen, of ruimtes daarin te faciliteren. Hiermee kan het de technische basis vormen voor appartementen/kamerverhuur platforms, hotel-software of zelfs camping-software.         
     
 paths:
   /accommodation_properties:
@@ -10273,12 +10273,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-06-16 14:54:28'
+        example: '2021-06-16 14:33:07'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-06-16 14:54:28'
+        example: '2021-06-16 14:33:07'
     required: []
   AuditTrail-write:
     properties:
@@ -10326,12 +10326,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-06-16 14:54:28'
+        example: '2021-06-16 14:33:07'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-06-16 14:54:28'
+        example: '2021-06-16 14:33:07'
     required: []
   ChangeLog-write:
     properties:
@@ -10409,7 +10409,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: zuid-drecht.nl
-    url: ocatiecatalogus.dev.zuid-drecht.nl
+    url: locatiecatalogus.dev.zuid-drecht.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
