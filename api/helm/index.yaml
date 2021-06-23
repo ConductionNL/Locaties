@@ -1,12 +1,60 @@
 apiVersion: v1
 entries:
   ocatiecatalogus:
+  - annotations:
+      artifacthub.io/containsSecurityUpdates: "true"
+    apiVersion: v2
+    appVersion: V1.0
+    created: "2021-06-23T09:01:39.579964Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.1.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.7.7
+    description: Het Locatie Component implementeert de places en accommodations strategie
+      vanuit schema.org. Het vormt daarmee de basis voor het bijhouden en verhuren
+      van ruimtes en kan in de meest simpele configuratie worden gebruikt voor planningsvraagstukken.
+      Bijvoorbeeld bij gebouwen rondom te reserveren ruimtes zoals (vergader)zalen.
+      Dit component is nadrukkelijk ontworpen om samen met het PDC het commercieel
+      verhuren van gehele gebouwen, of ruimtes daarin te faciliteren. Hiermee kan
+      het de technische basis vormen voor appartementen/kamerverhuur platforms, hotel-software
+      of zelfs camping-software.
+    digest: dd1f086bdd9a6d611b30c5e93356c46e6ef33674d6bbeb3138d6875f288af812
+    home: https://www.conduction.nl
+    icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
+    keywords:
+    - commonground
+    - haven
+    - nlx
+    - component
+    maintainers:
+    - email: ruben@conduction.nl
+      name: Ruben van der Linde
+    - email: info@conduction.nl
+      name: Conduction
+    name: ocatiecatalogus
+    sources:
+    - https://commonground.conduction.nl/
+    - https://www.commonground.nl/
+    urls:
+    - ocatiecatalogus-1.0.0.tgz
+    version: 1.0.0
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-03-12T15:12:24.6442929Z"
-    description: '&amp;#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
-      interface beschikbaar.&amp;#039;'
-    digest: f630cf1cae5385678ce1d46781a0b3f8f2788c935c376ecc3e783c83e9185ffb
+    created: "2021-06-23T09:01:39.5477288Z"
+    description: Het Locatie Component implementeert de places en accommodations strategie
+      vanuit schema.org. Het vormt daarmee de basis voor het bijhouden en verhuren
+      van ruimtes en kan in de meest simpele configuratie worden gebruikt voor planningsvraagstukken.
+      Bijvoorbeeld bij gebouwen rondom te reserveren ruimtes zoals (vergader)zalen.
+      Dit component is nadrukkelijk ontworpen om samen met het PDC het commercieel
+      verhuren van gehele gebouwen, of ruimtes daarin te faciliteren. Hiermee kan
+      het de technische basis vormen voor appartementen/kamerverhuur platforms, hotel-software
+      of zelfs camping-software.
+    digest: 944e94da3a768385b0e641f905c6ff0deeeacc3789c9bf0cf4d60ba901fdf2d7
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -31,7 +79,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-03-12T15:12:24.6487795Z"
+    created: "2021-06-23T09:01:39.5828922Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,4 +108,38 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-generated: "2021-03-12T15:12:24.6386028Z"
+  redis:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 6.0.11
+    created: "2021-06-23T09:01:39.5939277Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Open source, advanced key-value store. It is often referred to as
+      a data structure server since keys can contain strings, hashes, lists, sets
+      and sorted sets.
+    digest: 2d70861d16fc410ed6d6c818b97f7b0d519031147e5c7b42c5691d4c38742c44
+    home: https://github.com/bitnami/charts/tree/master/bitnami/redis
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: redis
+    sources:
+    - https://github.com/bitnami/bitnami-docker-redis
+    - http://redis.io/
+    urls:
+    - charts/redis-12.7.7.tgz
+    version: 12.7.7
+generated: "2021-06-23T09:01:39.5404524Z"
